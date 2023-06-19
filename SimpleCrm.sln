@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1705.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCrm.Web", "SimpleCrm.Web\SimpleCrm.Web.csproj", "{22518263-2C8E-4095-96E0-0759E50D357A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22518263-2C8E-4095-96E0-0759E50D357A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22518263-2C8E-4095-96E0-0759E50D357A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22518263-2C8E-4095-96E0-0759E50D357A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22518263-2C8E-4095-96E0-0759E50D357A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D20C66B-C306-4CE2-B671-6BEDA4C84B9C}
+	EndGlobalSection
+EndGlobal
