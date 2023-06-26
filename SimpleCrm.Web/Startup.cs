@@ -33,6 +33,13 @@ namespace SimpleCrm.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler(new ExceptionHandlerOptions
+                {
+                    ExceptionHandler = context => context.Response.WriteAsync("Oops!")
+                });
+            }
 
             app.UseWelcomePage(new WelcomePageOptions { Path = "/welcome" });
 
@@ -42,6 +49,7 @@ namespace SimpleCrm.Web
             {
                 endpoints.MapGet("/", async context =>
                 {
+                    //throw new Exception("Something went wrong!!!");
                     var greeting = greeter.GetGreeting();
                     await context.Response.WriteAsync(greeting);
                 });
