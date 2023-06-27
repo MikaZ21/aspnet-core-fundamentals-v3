@@ -41,13 +41,17 @@ namespace SimpleCrm.Web
                 });
             }
 
+            app.UseFileServer();
+            //app.UseDefaultFiles();
+            //app.UseStaticFiles();
+
             app.UseWelcomePage(new WelcomePageOptions { Path = "/welcome" });
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
+                endpoints.MapGet("/hello", async context =>
                 {
                     //throw new Exception("Something went wrong!!!");
                     var greeting = greeter.GetGreeting();
