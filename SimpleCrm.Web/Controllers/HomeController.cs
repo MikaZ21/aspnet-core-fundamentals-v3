@@ -1,12 +1,21 @@
 ﻿using System;
+using Microsoft.AspNetCore.Mvc;
+using SimpleCrm.Web.Models;
+
 namespace SimpleCrm.Web.Controllers
 {
-	public class HomeController
+	public class HomeController : Controller 
 	{
-		public string Index(string id)
+		public IActionResult Index()
 		{
-			return "Hello from a HomeController! and Id is," + id + "\ne.g. https://localhost:7059/home/index/5";
+			var model = new CustomerModel{
+			 Id = 1,
+			 FirstName = "John",
+			 LastName = "Doe",
+			 PhoneNumber = "111-222-3333"
+			};
+
+            return new ObjectResult(model);
 		}
 	}
 }
-
