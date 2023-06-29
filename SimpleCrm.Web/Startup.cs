@@ -53,12 +53,18 @@ namespace SimpleCrm.Web
                     "{controller=Home}/{action=index}/{id?}"
                 );
 
-                endpoints.MapControllerRoute(
-                    name: "contact",
-                    pattern: "Contact/{phone}",
-                    constraints: new { phone = "^\\d{3}-\\d{3}-\\d{4}$", },
-                    defaults: new { controller = "Contact", action = "List", }
-                    );
+                //endpoints.MapControllerRoute(
+                //    name: "about",
+                //    pattern: "About/{phone}",
+                //    constraints: new { phone = "^\\d{3}-\\d{3}-\\d{4}$", },
+                //    defaults: new { controller = "About", action = "phone", }
+                //);
+
+                //endpoints.MapControllerRoute(
+                //    name: "about",
+                //    pattern: "About/{address}",
+                //    defaults: new { controller = "About", action = "address", }
+                //);
             });
 
         // e.g https://localhost:7059/index

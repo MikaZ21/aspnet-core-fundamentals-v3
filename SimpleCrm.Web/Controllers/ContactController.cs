@@ -1,11 +1,22 @@
 ﻿using System;
+using Microsoft.AspNetCore.Mvc;
+
 namespace SimpleCrm.Web.Controllers
 {
+	[Route("contact")]
 	public class ContactController
 	{
-		public string List(string phone)
+        [Route("ph")]
+        public string Phone()
 		{
-			return "Hi from 'ContactController~!'" + "\ne.g. https://localhost:7059/contact/list";
+			return "111-222-3333";
+		}
+
+		// Or [Route("")] or blanck to show name just /contact
+		[Route("nm")]
+		public string Name()
+		{
+			return "Mika";
 		}
 	}
 }
