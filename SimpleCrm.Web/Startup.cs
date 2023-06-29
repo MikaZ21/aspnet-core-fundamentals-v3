@@ -48,8 +48,21 @@ namespace SimpleCrm.Web
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllerRoute(
+                    "default",
+                    "{controller=Home}/{action=index}/{id?}"
+                );
+
+                endpoints.MapControllerRoute(
+                    name: "contact",
+                    pattern: "Contact/{phone}",
+                    constraints: new { phone = "^\\d{3}-\\d{3}-\\d{4}$", },
+                    defaults: new { controller = "Contact", action = "List", }
+                    );
             });
+
+        // e.g https://localhost:7059/index
+            app.Run(ctx => ctx.Response.WriteAsync("Not found!!!"));
         }
     }
 }
