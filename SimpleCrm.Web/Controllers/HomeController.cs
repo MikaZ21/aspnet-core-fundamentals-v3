@@ -8,14 +8,19 @@ namespace SimpleCrm.Web.Controllers
 	{
 		public IActionResult Index()
 		{
-			var model = new CustomerModel{
+			var model = new CustomerModel
+			{
 			 Id = 1,
-			 FirstName = "John",
-			 LastName = "Doe",
-			 PhoneNumber = "111-222-3333"
+			 FirstName = "Mika",
+			 LastName = "Zukeyama",
+			 PhoneNumber = "111-222-3333",
+			 Email = "aaa@gmail.com",
+			 FavoriteSeason = "Spring",
+			 FavoriteFlower = "Hydrangea"
 			};
 
-            return new ObjectResult(model);
-		}
-	}
+            //return View("Home",model);
+            return View(model);
+        }
+    }
 }

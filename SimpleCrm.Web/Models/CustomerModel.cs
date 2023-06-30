@@ -11,6 +11,11 @@ namespace SimpleCrm.Web.Models
 
         public string PhoneNumber { get; set; }
 
+        public string Email { get; set; }
+
+        public string FavoriteSeason { get; set; }
+
+        public string FavoriteFlower { get; set; }
     }
 }
 
