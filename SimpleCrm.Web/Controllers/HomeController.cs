@@ -15,6 +15,14 @@ namespace SimpleCrm.Web.Controllers
 			_greeter = greeter;
 		}
 
+		public IActionResult Details(int id)
+		{
+			//A way to get a single customer.
+			//var cust = _customerData.GetAll().FirstOrDefault((x) => x.Id == id);
+			Customer cust = _customerData.Get(id);
+			return View(cust);
+		}
+
 		public IActionResult Index()
 		{
 			var model = new HomePageViewModel();

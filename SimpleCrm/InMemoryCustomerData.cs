@@ -1,5 +1,7 @@
 ﻿using System;
 namespace SimpleCrm
+
+
 {
 	public class InMemoryCustomerData : ICustomerData
 	{
@@ -17,6 +19,13 @@ namespace SimpleCrm
                       new Customer { Id =6, FirstName ="Michelle", LastName = "Leary", PhoneNumber = "555-555-3457" }
             };
         }
+
+        public Customer Get(int id)
+        {
+            return _customers.FirstOrDefault((Customer) => Customer.Id == id);
+            
+        }
+
         public IEnumerable<Customer> GetAll()
         {
             return _customers;
