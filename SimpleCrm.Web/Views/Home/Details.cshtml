@@ -1,4 +1,5 @@
-﻿@model SimpleCrm.Customer
+﻿@using SimpleCrm.Web.Controllers
+@model SimpleCrm.Customer
 
 <!DOCTYPE html>
 
@@ -8,8 +9,12 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <h1>@Model.LastName</h1>
+    <h1>@Model.LastName @Model.FirstName</h1>
     <p>..details here</p>
+
+    <div>
+        @Html.ActionLink("Back", nameof(Index))
+    </div>
 </body>
 </html>
 

@@ -20,6 +20,10 @@ namespace SimpleCrm.Web.Controllers
 			//A way to get a single customer.
 			//var cust = _customerData.GetAll().FirstOrDefault((x) => x.Id == id);
 			Customer cust = _customerData.Get(id);
+			if(cust == null)
+			{
+				return RedirectToAction(nameof(Index));
+			}
 			return View(cust);
 		}
 
