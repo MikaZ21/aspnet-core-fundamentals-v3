@@ -1,13 +1,15 @@
 ﻿using System;
-namespace SimpleCrm
+using System.Collections.Generic;
+using System.Linq;
 
+namespace SimpleCrm
 
 {
 	public class InMemoryCustomerData : ICustomerData
 	{
-		IList<Customer> _customers;
+		static IList<Customer> _customers;
 
-		public InMemoryCustomerData()
+		static InMemoryCustomerData()
 		{
             _customers = new List<Customer>
             {
@@ -22,7 +24,7 @@ namespace SimpleCrm
 
         public Customer Get(int id)
         {
-            return _customers.FirstOrDefault((Customer) => Customer.Id == id);
+            return _customers.FirstOrDefault(x => x.Id == id);
             
         }
 
@@ -30,6 +32,12 @@ namespace SimpleCrm
         {
             return _customers;
         }
-	}
+
+        public void Save(Customer customer)
+        {
+            customer.Id = _customers.Max(x => x.Id) + 1;
+            _customers.Add(customer);
+        }
+    }
 }
 
