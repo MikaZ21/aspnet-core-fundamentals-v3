@@ -8,13 +8,18 @@ namespace SimpleCrm.Web.Models
 	{
 		public int Id { get; set; }
 
+        [Required()]
         [Display(Name = "First Name:")]
-		public string FirstName { get; set; }
+        [MinLength(1), MaxLength(30)]
+        public string FirstName { get; set; }
 
+        [Required()]
         [Display(Name = "Last Name:")]
+        [MinLength(1), MaxLength(30)]
         public string LastName { get; set; }
 
-		[DataType(DataType.PhoneNumber)]
+        [Required()]
+        [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone Number:")]
         public string PhoneNumber { get; set; }
 
