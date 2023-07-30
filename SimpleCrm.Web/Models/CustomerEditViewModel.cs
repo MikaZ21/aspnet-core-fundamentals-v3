@@ -8,17 +8,17 @@ namespace SimpleCrm.Web.Models
 	{
 		public int Id { get; set; }
 
-        [Required()]
+        [Required(ErrorMessage = "The First Name field is required")]
         [Display(Name = "First Name:")]
-        [MinLength(1), MaxLength(30)]
+        [MinLength(3), MaxLength(30)]
         public string FirstName { get; set; }
 
-        [Required()]
+        [Required(ErrorMessage = "The Last Name field is required")]
         [Display(Name = "Last Name:")]
-        [MinLength(1), MaxLength(30)]
+        [MinLength(3), MaxLength(30)]
         public string LastName { get; set; }
 
-        [Required()]
+        [Required(ErrorMessage = "The Phone Number field is required")]
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone Number:")]
         public string PhoneNumber { get; set; }
