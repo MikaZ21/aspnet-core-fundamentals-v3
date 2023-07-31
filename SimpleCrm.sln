@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCrm.Web", "SimpleCrm.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCrm", "SimpleCrm\SimpleCrm.csproj", "{EE096188-BB1B-43F5-8B1E-908E5955D3F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCrm.SqlDbServices", "SimpleCrm.SqlDbServices\SimpleCrm.SqlDbServices.csproj", "{521A2715-A176-470C-99DE-9E6D051E744A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EE096188-BB1B-43F5-8B1E-908E5955D3F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE096188-BB1B-43F5-8B1E-908E5955D3F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE096188-BB1B-43F5-8B1E-908E5955D3F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{521A2715-A176-470C-99DE-9E6D051E744A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{521A2715-A176-470C-99DE-9E6D051E744A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{521A2715-A176-470C-99DE-9E6D051E744A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{521A2715-A176-470C-99DE-9E6D051E744A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
