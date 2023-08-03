@@ -5,18 +5,23 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SimpleCrm.SqlDbServices;
+using Pomelo.EntityFrameworkCore.MySql;
+using Microsoft.EntityFrameworkCore;
 
 namespace SimpleCrm.Web
 {
     public class Startup
     {
-        private readonly IConfiguration configuration;
+        public IConfiguration Configuration { get; }
+        //private readonly IConfiguration configuration;
 
         public Startup(IConfiguration configuration)
         {
-            this.configuration = configuration;
+            this.Configuration = configuration;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -25,7 +30,13 @@ namespace SimpleCrm.Web
         {
             services.AddMvc();
             services.AddSingleton<IGreeter, ConfigurationGreeter>();
-            services.AddScoped<ICustomerData, InMemoryCustomerData>();
+            services.AddScoped<ICustomerData, SqlCustomerData>();
+
+            services.AddDbContext<SimpleCrmDbContext>(options =>
+            {
+                var connectionStr = Configuration.GetConnectionString("SimpleCrmConnection");
+                options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
