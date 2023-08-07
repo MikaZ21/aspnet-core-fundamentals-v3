@@ -12,6 +12,7 @@
             <td>
                 <a href="/home/details/@item.Id">Details</a>
                 @Html.ActionLink("View", nameof(HomeController.Details), new { id = item.Id })
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
             </td>
             <td>@item.FirstName</td>
             <td>@item.LastName</td>
@@ -19,6 +20,8 @@
         </tr>
     }
 </table>
+<a asp-action="Create" asp-controller="Home">Create</a>
+
 @section footer {
     <p>
         @Model.CurrentMessage
