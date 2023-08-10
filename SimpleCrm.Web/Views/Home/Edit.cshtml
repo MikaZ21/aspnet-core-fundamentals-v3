@@ -1,0 +1,27 @@
+﻿@model CustomerEditViewModel
+@{
+    ViewBag.Title = $"Edit {Model.FirstName}";
+}
+
+<div>
+    <h1>Edit</h1>
+    <form method="post" asp-antiforgery="true" asp-action="Edit">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" />
+        <span asp-validation-for="FirstName"></span>
+
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" />
+        <span asp-validation-for="LastName"></span>
+
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" />
+        <span asp-validation-for="PhoneNumber"></span>
+
+        <label asp-for="OptInNewsletter"></label>
+        <input asp-for="OptInNewsletter" />
+
+        <select asp-for="Type" asp-items="@Html.GetEnumSelectList(typeof(SimpleCrm.CustomerType))">
+        </select>
+    </form>
+</div>
