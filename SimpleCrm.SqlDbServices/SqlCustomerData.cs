@@ -23,9 +23,14 @@ namespace SimpleCrm.SqlDbServices
             return simpleCrmDbContext.Customer.ToList();
         }
 
-        public void Save(Customer customer)
+        public void Add(Customer customer)
         {
-            simpleCrmDbContext.Add(customer);
+            simpleCrmDbContext.Customer.Add(customer);
+            simpleCrmDbContext.SaveChanges();
+        }
+
+        public void Update(Customer customer)
+        {
             simpleCrmDbContext.SaveChanges();
         }
     }
