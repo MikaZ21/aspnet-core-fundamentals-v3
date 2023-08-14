@@ -26,6 +26,7 @@
     <Folder Include="ViewComponents\" />
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="Views\Shared\Components\Greeting\" />
+    <Folder Include="Models\Account\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Controllers\" />
@@ -36,6 +37,7 @@
     <None Remove="ViewComponents\" />
     <None Remove="Views\Shared\Components\" />
     <None Remove="Views\Shared\Components\Greeting\" />
+    <None Remove="Models\Account\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.16" />
