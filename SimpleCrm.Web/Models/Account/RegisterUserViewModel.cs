@@ -10,7 +10,7 @@ namespace SimpleCrm.Web.Models.Account
 		public string UserName { get; set; }
 
 		[Required, MaxLength(256), DisplayName("Name")]
-		public string DsplayName { get; set; }
+		public string DisplayName { get; set; }
 
 		[Required, DataType(DataType.Password)]
 		public string Password { get; set; }
