@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using SimpleCrm.SqlDbServices;
 using Pomelo.EntityFrameworkCore.MySql;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace SimpleCrm.Web
 {
@@ -28,15 +29,22 @@ namespace SimpleCrm.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionStr = Configuration.GetConnectionString("SimpleCrmConnection");
+
             services.AddMvc();
             services.AddSingleton<IGreeter, ConfigurationGreeter>();
             services.AddScoped<ICustomerData, SqlCustomerData>();
 
             services.AddDbContext<SimpleCrmDbContext>(options =>
             {
-                var connectionStr = Configuration.GetConnectionString("SimpleCrmConnection");
                 options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr));
             });
+            services.AddDbContext<CrmIdentityDbContext>(options =>
+            {
+                options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr));
+            });
+            services.AddIdentity<CrmUser, IdentityRole>()
+                .AddEntityFrameworkStores<CrmIdentityDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +65,11 @@ namespace SimpleCrm.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {
