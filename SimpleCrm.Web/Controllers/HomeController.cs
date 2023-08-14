@@ -76,7 +76,7 @@ namespace SimpleCrm.Web.Controllers
 		{
 			var model = new HomePageViewModel();
 			model.Customers = _customerData.GetAll();
-			model.CurrentMessage = _greeter.GetGreeting();
+			//model.CurrentMessage = _greeter.GetGreeting();
 			//var model = new CustomerModel
 			//{
 			// Id = 1,
