@@ -58,24 +58,27 @@ namespace SimpleCrm.Web.Controllers
 		[HttpPost, ValidateAntiForgeryToken]
 		public async Task<IActionResult> Login(LoginUserViewModel model, string returnUrl)
 		{
-            if (ModelState.IsValid)
-            {
-                var user = new CrmUser
-                {
-                    UserName = model.UserName,
-                    Email = model.UserName
-                };
-                var createResult = await this.userManager.CreateAsync(user, model.Password);
-                if (createResult.Succeeded)
-                {
-                    await this.signInManager.SignInAsync(user, isPersistent: false);
-                    return Redirect(returnUrl);
-                }
-                foreach (var result in createResult.Errors)
-                {
-                    ModelState.AddModelError("", result.Description);
-                }
-            }
+			if (ModelState.IsValid)
+			{
+				var loginResult = await signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
+				
+					if (loginResult.Succeeded)
+					{
+						if (Url.IsLocalUrl(returnUrl))
+						{
+							return Redirect(returnUrl);
+						}
+						else
+						{
+							return RedirectToAction("Index", "Home");
+						}
+					}
+				
+				if (!loginResult.Succeeded)
+				{
+					ModelState.AddModelError("", "Could not login");
+				}
+			}
             return View();
         }
 
