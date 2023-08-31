@@ -17,11 +17,15 @@ namespace SimpleCrm.Web.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
 		{
-            var user = await this.userManager.FindByEmailAsync(this.User.Identity.Name);
-
-            
-			return View(user);
-		}
+            if (User.Identity.IsAuthenticated) { 
+                var user = await this.userManager.FindByEmailAsync(this.User.Identity.Name);
+                return View(user);
+            }
+            else
+            {
+                return View(new CrmUser());
+            }
+        }
 	}
 }
 

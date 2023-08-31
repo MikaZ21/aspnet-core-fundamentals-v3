@@ -48,5 +48,42 @@ namespace SimpleCrm.Web.Controllers
 			}
 			return View();
 		}
+
+		[HttpGet]
+		public IActionResult Login(string returnUrl)
+		{
+			return View();
+		}
+
+		[HttpPost, ValidateAntiForgeryToken]
+		public async Task<IActionResult> Login(LoginUserViewModel model, string returnUrl)
+		{
+            if (ModelState.IsValid)
+            {
+                var user = new CrmUser
+                {
+                    UserName = model.UserName,
+                    Email = model.UserName
+                };
+                var createResult = await this.userManager.CreateAsync(user, model.Password);
+                if (createResult.Succeeded)
+                {
+                    await this.signInManager.SignInAsync(user, isPersistent: false);
+                    return Redirect(returnUrl);
+                }
+                foreach (var result in createResult.Errors)
+                {
+                    ModelState.AddModelError("", result.Description);
+                }
+            }
+            return View();
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+		public async Task<IActionResult> Logout()
+		{
+			await signInManager.SignOutAsync();
+			return RedirectToAction("Index", "Home");
+		}
 	}
 }
