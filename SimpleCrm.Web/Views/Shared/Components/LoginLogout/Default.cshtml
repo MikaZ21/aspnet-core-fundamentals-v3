@@ -1,0 +1,14 @@
+﻿@model CrmUser
+@{
+}
+
+<div>
+    @if (User.Identity.IsAuthenticated)
+    {
+            <span>Hello, @Model.DisplayName</span>
+    }
+    else
+    {
+            <span>Anonymous user!</span>
+    }
+</div>
