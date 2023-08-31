@@ -28,4 +28,3 @@ namespace SimpleCrm.Web.ViewComponents
         }
 	}
 }
-
