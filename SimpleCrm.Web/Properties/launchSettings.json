@@ -11,7 +11,7 @@
     "SimpleCrm.Web": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7059;http://localhost:5086",
+      "applicationUrl": "http://localhost:36391",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
