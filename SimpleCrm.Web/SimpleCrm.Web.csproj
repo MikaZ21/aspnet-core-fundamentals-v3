@@ -15,6 +15,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
+    <Content Remove="wwwroot\css\" />
+    <Content Remove="wwwroot\js\" />
+    <Content Remove="bundleconfig.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\" />
@@ -29,6 +32,8 @@
     <Folder Include="Models\Account\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Shared\Components\LoginLogout\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\js\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Controllers\" />
