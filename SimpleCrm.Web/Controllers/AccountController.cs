@@ -82,7 +82,7 @@ namespace SimpleCrm.Web.Controllers
             return View();
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpGet]
 		public async Task<IActionResult> Logout()
 		{
 			await signInManager.SignOutAsync();

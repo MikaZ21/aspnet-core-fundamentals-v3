@@ -3,34 +3,43 @@
     ViewBag.Title = "Register";
 }
 
-<div>
-    <h1>Register</h1>
-
+<div class="mdl-cell mdl-cell--12-col">
     <form method="post" asp-antiforgery="true">
-        <div asp-validation-summary="ModelOnly"></div>
+        <div class="mdl-grid page-container">
+            <div class="mdl-cell mdl-cell--12-col page-row">
+                <h3 class="page-title">Register</h3>
+                <div asp-validation-summary="ModelOnly"></div>
+            </div>
 
-        <div>
-            <label asp-for="UserName"></label>
-            <input asp-for="UserName" />
-            <span asp-validation-for="UserName"></span>
-        </div>
-        <div>
-            <label asp-for="DisplayName"></label>
-            <input asp-for="DisplayName" />
-            <span asp-validation-for="DisplayName"></span>
-        </div>
-        <div>
-            <label asp-for="Password"></label>
-            <input asp-for="Password" />
-            <span asp-validation-for="Password"></span>
-        </div>
-        <div>
-            <label asp-for="ConfirmPassword"></label>
-            <input asp-for="ConfirmPassword" />
-            <span asp-validation-for="ConfirmPassword"></span>
-        </div>
-        <div>
-            <input type="submit" value="Register" />
+            <div class="mdl-cell mdl-cell--6-col page-row">
+                <div class="mdl-cell mdl-cell--12-col page-row">
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+                        <label asp-for="UserName" class="mdl-textfield__label"></label>
+                        <input asp-for="UserName" class="mdl-textfield__input" />
+                        <span asp-validation-for="UserName" class="mdl-textfield__error"></span>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--12-col page-row">
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                        <label asp-for="Password" class="mdl-textfield__label"></label>
+                        <input asp-for="Password" class="mdl-textfield__input" />
+                        <span asp-validation-for="DisplayName" class="mdl-textfield__error"></span>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--12-col page-row">
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                        <label asp-for="ConfirmPassword" class="mdl-textfield__label"></label>
+                        <input asp-for="ConfirmPassword" class="mdl-textfield__input" />
+                        <span asp-validation-for="ConfirmPassword" class="mdl-textfield__error"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col page-row">
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised
+                        mdl-button--colored mdl-js-ripple-effect">
+                    Register
+                </button>
+            </div>
         </div>
     </form>
 </div>

@@ -6,6 +6,7 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="/css/vendor.min.css" />
+    <link rel="stylesheet" href="/css/site.css" />
     <script src="/js/vendor.min.js"></script>
 
     @*<style>
@@ -43,7 +44,7 @@
         </div>
 
         <main class="mdl-layout__content">
-
+            @RenderBody()
         </main>
 
         <footer class="mdl-mini-footer">
@@ -59,12 +60,6 @@
             </div>
         </footer>
     </div>
-
-
-
-
-
-
 
     <!-- Old layout-->
     <div>
