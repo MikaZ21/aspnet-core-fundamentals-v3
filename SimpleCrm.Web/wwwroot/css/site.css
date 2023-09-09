@@ -1,12 +1,12 @@
-﻿.content {
-    width: 80%;
+﻿.mdl-layout__content {
+    width: 60%;
     margin: auto;
 }
 
 .fab-right {
     position: absolute;
-    right: 40px;
-    top: 36px;
+    right: 17vh;
+    top: 7vh;
     z-index: 999;
 }
 
