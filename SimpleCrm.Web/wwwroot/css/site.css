@@ -119,7 +119,7 @@ h3.page-title {
 }
 
 .validation-summary-errors {
-    color: red;
+    color: #d50000;
 }
     .validation-summary-errors > ul {
         list-style-type: none;
