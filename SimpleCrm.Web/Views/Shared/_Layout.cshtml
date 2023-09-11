@@ -67,7 +67,34 @@
             padding-left: 4vh;
             font-size: 1.5rem;
             padding-bottom: 5vh;
+            color: deepskyblue;
         }
+        .mdl-textfield--expandable {
+            width: 23%;
+        }
+        .mdl-textfield__input {
+            background-color: #e1f0e1;
+            text-align: center;
+            color: black;
+            border-radius: 3px;
+        }
+        .mdl-textfield {
+            margin: 8px;
+        }
+        h3.page-title {
+            padding-left: 4vh;
+            font-size: 4rem;
+        }
+        .mdl-checkbox__box-outline {
+            background-color: #e1f0e1;
+        }
+        .mdl-button {
+            margin-left: 25px;
+        }
+        .mdl-textfield.is-focused .mdl-textfield__input .serchInput {
+            width: 10vh;
+        }
+        
         </style>
 </head>
 
@@ -82,6 +109,18 @@
                     <a class="mdl-navigation__link" asp-action="Create" asp-controller="Home">Create</a>
                     @await Component.InvokeAsync("LoginLogout")
                 </nav>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right">
+                    <label class="mdl-button mdl-js-button mdl-button--icon"
+                           for="waterfall-exp">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input serchInput" type="text" name="sample"
+                               id="waterfall-exp" placeholder="Serch &#128269;">
+                    </div>
+                </div>
             </div>
         </header>
         <div class="mdl-layout__drawer">

@@ -12,34 +12,37 @@
             </div>
 
             <div class="mdl-cell mdl-cell--6-col page-row">
-                <div class="mdl-cell mdl-cell--12-col page-row">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
-                        <label asp-for="UserName" class="mdl-textfield__label"></label>
-                        <input asp-for="UserName" class="mdl-textfield__input" />
-                        <span asp-validation-for="UserName" class="mdl-textfield__error"></span>
+                <div class="mdl-grid page-container">
+
+                    <div class="mdl-cell mdl-cell--12-col page-row">
+                        <div class="mdl-textfield mdl-js-textfield mdl-cell--12-col">
+                            <label asp-for="UserName" class="mdl-textfield__label"></label>
+                            <input asp-for="UserName" class="mdl-textfield__input" />
+                            <span asp-validation-for="UserName" class="mdl-textfield__error"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="mdl-cell mdl-cell--12-col page-row">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                        <label asp-for="Password" class="mdl-textfield__label"></label>
-                        <input asp-for="Password" class="mdl-textfield__input" />
-                        <span asp-validation-for="DisplayName" class="mdl-textfield__error"></span>
+                    <div class="mdl-cell mdl-cell--12-col page-row">
+                        <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                            <label asp-for="Password" class="mdl-textfield__label"></label>
+                            <input asp-for="Password" class="mdl-textfield__input" />
+                            <span asp-validation-for="Password" class="mdl-textfield__error"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="mdl-cell mdl-cell--12-col page-row">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                        <label asp-for="ConfirmPassword" class="mdl-textfield__label"></label>
-                        <input asp-for="ConfirmPassword" class="mdl-textfield__input" />
-                        <span asp-validation-for="ConfirmPassword" class="mdl-textfield__error"></span>
+                    <div class="mdl-cell mdl-cell--12-col page-row">
+                        <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                            <label asp-for="ConfirmPassword" class="mdl-textfield__label"></label>
+                            <input asp-for="ConfirmPassword" class="mdl-textfield__input" />
+                            <span asp-validation-for="ConfirmPassword" class="mdl-textfield__error"></span>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="mdl-cell mdl-cell--12-col page-row">
                 <button type="submit" class="mdl-button mdl-js-button mdl-button--raised
-                        mdl-button--colored mdl-js-ripple-effect">
+                    mdl-button--colored mdl-js-ripple-effect">
                     Register
                 </button>
             </div>
-        </div>
+            </div>
     </form>
 </div>
