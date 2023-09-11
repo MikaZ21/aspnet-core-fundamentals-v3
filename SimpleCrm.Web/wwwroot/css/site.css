@@ -13,3 +13,115 @@
 .mdl-textfield__error.field-validation-error {
     visibility:visible;
 }
+
+.demo-layout-transparent {
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/images/desk-background-dark.jpg') center / cover;
+    color: deepskyblue;
+}
+
+.demo-layout-transparent .mdl-layout__header,
+.mdl-layout__header-row .mdl-navigation__link,
+.demo-layout-transparent .mdl-layout__drawer-button,
+.mdl-list__item {
+    color: honeydew;
+}
+
+.mdl-list__item--two-line .mdl-list__item-primary-content .mdl-list__item-sub-title {
+    color: cornflowerblue;
+}
+
+.mdl-layout__header-row .mdl-navigation__link {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),
+}
+
+.mdl-button--fab.mdl-button--colored {
+    background: deepskyblue;
+    color: honeydew;
+}
+
+.mdl-layout__content {
+    width: 65%;
+    margin: auto;
+}
+
+.fab-right {
+    position: absolute;
+    right: 0vh;
+    top: 6vh;
+    z-index: 999;
+}
+
+.mdl-list__item-secondary-action, a {
+    color: cornflowerblue;
+    text-decoration: none;
+}
+
+.mdl-mini-footer {
+    background-color: #e1f0e1;
+}
+
+.mdl-mini-foter__link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+    .mdl-mini-foter__link-list > li {
+        padding-right: 1rem;
+    }
+
+footer {
+    height: 12px;
+    background-color: honeydew;
+}
+
+a.createBtnUnderList {
+    padding-left: 4vh;
+    font-size: 1.5rem;
+    padding-bottom: 5vh;
+    color: deepskyblue;
+}
+
+.mdl-textfield--expandable {
+    width: 23%;
+}
+
+.mdl-textfield__input {
+    background-color: #e1f0e1;
+    text-align: center;
+    color: black;
+    border-radius: 3px;
+}
+
+.mdl-textfield {
+    margin: 8px;
+}
+
+h3.page-title {
+    padding-left: 4vh;
+    font-size: 4rem;
+}
+
+.mdl-checkbox__box-outline {
+    background-color: #e1f0e1;
+}
+
+.mdl-button {
+    margin-left: 25px;
+}
+
+.mdl-textfield.is-focused .mdl-textfield__input .serchInput {
+    width: 10vh;
+}
+
+.mdl-textfield__label {
+    left: 8px;
+}
+
+.validation-summary-errors {
+    color: red;
+}
+    .validation-summary-errors > ul {
+        list-style-type: none;
+        padding: 32px 0 0 23px
+    }

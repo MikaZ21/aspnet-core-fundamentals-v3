@@ -21,7 +21,8 @@
             "outputFileName": "wwwroot/js/vendor-post.min.js",
             "inputFiles": [
                 "node_modules/jquery/dist/jquery.min.js",
-                "node_modules/jquery-validation/dist/jquery.validate.min.js"
+                "node_modules/jquery-validation/dist/jquery.validate.min.js",
+                "wwwroot/js/jquery.validate.unobtrusive.js"
             ],
             "minify": {
                 "enabled": false

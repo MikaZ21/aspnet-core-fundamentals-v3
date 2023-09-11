@@ -17,7 +17,6 @@
     <Content Remove="wwwroot\" />
     <Content Remove="wwwroot\css\" />
     <Content Remove="wwwroot\js\" />
-    <Content Remove="bundleconfig.json" />
     <Content Remove="wwwroot\images\" />
   </ItemGroup>
   <ItemGroup>
