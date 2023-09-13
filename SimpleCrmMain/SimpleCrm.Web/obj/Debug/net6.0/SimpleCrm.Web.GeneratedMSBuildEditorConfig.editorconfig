@@ -1,0 +1,68 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = SimpleCrm.Web
+build_property.RootNamespace = SimpleCrm.Web
+build_property.ProjectDir = /Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/Views/Home/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/Views/Home/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/Views/Home/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/Views/Home/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Ib21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/Views/Home/_Summary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9fU3VtbWFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/Views/Shared/Components/Greeting/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvR3JlZXRpbmcvRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/Views/Shared/Components/LoginLogout/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvTG9naW5Mb2dvdXQvRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

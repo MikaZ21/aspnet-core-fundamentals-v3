@@ -1,0 +1,49 @@
+{
+  "Version": 1,
+  "Hash": "1lNCZsm/SoCwlyG4izmnKxIyovRSqfhzCp2g3Llw7yI=",
+  "Source": "SimpleCrm.Web",
+  "BasePath": "_content/SimpleCrm.Web",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrm/SimpleCrm.csproj",
+      "Version": 2,
+      "Source": "SimpleCrm",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "",
+      "AdditionalPublishPropertiesToRemove": "TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "",
+      "AdditionalBuildPropertiesToRemove": "TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [
+    {
+      "Name": "SimpleCrm.Web/wwwroot",
+      "Source": "SimpleCrm.Web",
+      "ContentRoot": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrm.Web/wwwroot/",
+      "BasePath": "_content/SimpleCrm.Web",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrm.Web/wwwroot/index.html",
+      "SourceId": "SimpleCrm.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrm.Web/wwwroot/",
+      "BasePath": "_content/SimpleCrm.Web",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/index.html"
+    }
+  ]
+}
