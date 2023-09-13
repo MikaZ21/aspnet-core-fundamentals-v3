@@ -1,0 +1,14 @@
+﻿@model CrmUser
+@{
+}
+
+<div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a class="mdl-navigation__link" asp-action="Logout" asp-controller="Account">Logout</a>
+     }
+    else
+    {
+        <a class="mdl-navigation__link" asp-action="Login" asp-controller="Account">Login</a>
+    }
+</div>

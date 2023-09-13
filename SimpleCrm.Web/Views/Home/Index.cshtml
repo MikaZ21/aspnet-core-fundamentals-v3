@@ -1,0 +1,31 @@
+﻿@model HomePageViewModel
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="content">
+    <h1>Customers</h1>
+    <a class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fab-right" asp-action="Create">
+        <i class="material-icons">add</i>
+    </a>
+
+    <div class="mdl-list">
+        @foreach (var customer in Model.Customers)
+        {
+            <!--<tr>
+            <td>@customer.FirstName</td>
+            <td>@customer.LastName</td>
+            <td>@customer.PhoneNumber</td>
+            <td>-->
+            @*<a href="/home/details/@item.Id">Details</a>
+                @Html.ActionLink("View", nameof(HomeController.Details), new { id = item.Id })*@
+
+            <!--<a asp-action="Details" asp-route-id="@customer.Id">Details</a>
+                    <a asp-action="Edit" asp-route-id="@customer.Id">Edit</a>
+                </tdcustomer
+            </tr>-->
+            <partial name="_Summary" model="customer" />
+        }
+    </div>
+    <a class="createBtnUnderList" asp-controller="Home" asp-action="Create">Create Customer +</a>
+</div>
