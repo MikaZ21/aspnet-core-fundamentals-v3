@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "n1Nxy5ES01FuitZ+n97XgT4X5pIIZPOSBFrR2oSDqs8=",
+  "Hash": "468eqOOheBoFVFese8yMsP36MZxz5rS2RBwPdv+XZd8=",
   "Source": "SimpleCrm.Web",
   "BasePath": "_content/SimpleCrm.Web",
   "Mode": "Default",
@@ -28,23 +28,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/wwwroot/.DS_Store",
-      "SourceId": "SimpleCrm.Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/wwwroot/",
-      "BasePath": "_content/SimpleCrm.Web",
-      "RelativePath": ".DS_Store",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/.DS_Store"
-    },
     {
       "Identity": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/wwwroot/css/site.css",
       "SourceId": "SimpleCrm.Web",
