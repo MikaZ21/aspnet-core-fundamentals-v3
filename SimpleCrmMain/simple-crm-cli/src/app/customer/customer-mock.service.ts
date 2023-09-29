@@ -42,16 +42,16 @@ export class CustomerMockService extends CustomerService {
         preferredContactMethod: 'email',
         lastContactDate: new Date().toISOString()
       },
-      // {
-      //   customerId: 3,
-      //   firstName: 'Mika',
-      //   lastName: 'Zukeyama',
-      //   phoneNumber: '314-555-0000',
-      //   emailAddress: 'mika@example.com',
-      //   statusCode: 'Prospect',
-      //   preferredContactMethod: 'email',
-      //   lastContactDate: new Date().toISOString()
-      // }
+      {
+        customerId: 3,
+        firstName: 'Mika',
+        lastName: 'Zukeyama',
+        phoneNumber: '314-555-0000',
+        emailAddress: 'mika@example.com',
+        statusCode: 'Prospect',
+        preferredContactMethod: 'email',
+        lastContactDate: new Date().toISOString()
+      }
     ];
   }
 
