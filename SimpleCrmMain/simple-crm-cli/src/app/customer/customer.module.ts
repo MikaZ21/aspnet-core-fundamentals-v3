@@ -8,8 +8,11 @@ import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerService } from './customer.service';
 import { CustomerMockService } from './customer-mock.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
-
+FlexLayoutModule
 @NgModule({
   declarations: [
     CustomerListPageComponent
@@ -19,7 +22,9 @@ import { CustomerMockService } from './customer-mock.service';
     HttpClientModule,
     CustomerRoutingModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [
     {

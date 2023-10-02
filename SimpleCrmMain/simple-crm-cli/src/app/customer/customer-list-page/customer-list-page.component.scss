@@ -1,7 +1,11 @@
-.table-content {
-    max-width: 60%;
-}
+// .table-content {
+//     max-width: 60%;
+// }
 
 table {
     width: 100%;
+}
+
+.mat-mdc-card-header {
+    flex-direction: column;
 }

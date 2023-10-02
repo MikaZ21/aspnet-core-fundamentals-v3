@@ -5,8 +5,8 @@
     </button>
     {{title}}
     <mat-icon matListIcon>home</mat-icon>
-
   </mat-toolbar>
+
   <mat-sidenav-container style="flex:1 100%">
     <mat-sidenav #sidenav [opened]="true" [mode]="'side'">
       <mat-nav-list>
@@ -22,9 +22,11 @@
         </a>
       </mat-nav-list>
     </mat-sidenav>
+    
     <router-outlet></router-outlet>
     <button (click)="sidenav.toggle()">Toggle</button>
   </mat-sidenav-container>
+
   <div class="footer">
     Footer
   </div>
