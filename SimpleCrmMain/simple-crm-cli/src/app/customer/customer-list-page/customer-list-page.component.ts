@@ -31,8 +31,7 @@ export class CustomerListPageComponent implements OnInit {
     });
 
     // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   this.customers$ = result;
+    //   console.log(`The dialog was closed: ${result}`);
     // });
   }
 }
