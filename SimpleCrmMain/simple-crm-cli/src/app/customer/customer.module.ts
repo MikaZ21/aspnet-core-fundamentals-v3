@@ -12,7 +12,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CustomerCreateDialogComponent } from './customer-create-dialog/customer-create-dialog.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 FlexLayoutModule
 @NgModule({
@@ -29,6 +32,9 @@ FlexLayoutModule
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [
     {

@@ -1,20 +1,42 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Customer } from '../customer.model';
+import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'crm-customer-create-dialog',
   templateUrl: './customer-create-dialog.component.html',
-  styleUrls: ['./customer-create-dialog.component.scss']
+  styleUrls: ['./customer-create-dialog.component.scss'],
 })
+
 export class CustomerCreateDialogComponent {
-  constructor(public dialogRef: MatDialogRef<CustomerCreateDialogComponent>,
+  detailForm: FormGroup;
+
+  constructor(
+              private fb: FormBuilder,
+              public dialogRef: MatDialogRef<CustomerCreateDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Customer | null
               ) {
+                this.detailForm = this.fb.group({
+                  firstName: [''],
+                  lastName: [''],
+                  phoneNumber: [''],
+                  emailAddress: [''],
+                  preferredContactMethod: ['']
+                });
+                if (this.data) {
+                  this.detailForm.patchValue(this.data);
+                }
   }
 
-  save(){
-    const customer = {};
+  ngOnInit(): void {  
+  }
+
+  save(): void {
+    if (!this.detailForm.valid) {
+      return;
+    }
+    const customer = { ...this.data, ...this.detailForm.value };
     this.dialogRef.close(customer);
   }
 

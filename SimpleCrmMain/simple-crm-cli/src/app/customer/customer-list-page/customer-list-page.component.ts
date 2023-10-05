@@ -5,12 +5,12 @@ import { Observable } from 'rxjs';
 import { CustomerCreateDialogComponent } from '../customer-create-dialog/customer-create-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
-
 @Component({
   selector: 'crm-customer-list-page',
   templateUrl: './customer-list-page.component.html',
   styleUrls: ['./customer-list-page.component.scss'],
 })
+
 export class CustomerListPageComponent implements OnInit {
 
   customers$: Observable<Customer[]>;
