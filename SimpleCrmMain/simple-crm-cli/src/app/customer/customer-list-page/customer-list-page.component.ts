@@ -30,8 +30,8 @@ export class CustomerListPageComponent implements OnInit {
       data: null
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`The dialog was closed: ${result}`);
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`The dialog was closed:`, result);
+    });
   }
 }
