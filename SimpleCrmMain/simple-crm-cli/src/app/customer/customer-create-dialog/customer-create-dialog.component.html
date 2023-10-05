@@ -17,8 +17,10 @@
             <input matInput formControlName="emailAddress" name="emailAddress">
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Preferred Contact Method</mat-label>
-            <input matInput formControlName="preferredContactMethod" name="preferredContactMethod">
+            <mat-select placeholder="Contact Method" formControlName="preferredContactMethod" name="preferredContactMethod">
+                <mat-option value="Email">Email</mat-option>
+                <mat-option value="Phone">Phone</mat-option>
+            </mat-select>
         </mat-form-field>
     </form>
 </mat-dialog-content>
