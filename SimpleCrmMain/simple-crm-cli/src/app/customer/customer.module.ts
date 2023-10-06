@@ -17,12 +17,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 
 FlexLayoutModule
 @NgModule({
   declarations: [
     CustomerListPageComponent,
-    CustomerCreateDialogComponent
+    CustomerCreateDialogComponent,
+    CustomerDetailComponent
   ],
   imports: [
     CommonModule,
