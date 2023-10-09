@@ -1,5 +1,43 @@
-<p>customer-detail works!</p>
 
-<pre> 
-    {{customer | async | json}}
-</pre>
+<div class="table-content">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title fxLayout>
+                <span>Edit</span>
+            </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form [formGroup]="detailForm" novalidate>
+                <section fxLayout="row wrap" fxLayoutAlign="space-between">
+                    <mat-form-field  fxFlex="48" fxFlex.lt-md="100">
+                        <mat-label>First Name</mat-label>
+                        <input matInput formControlName="firstName" name="firstName">  
+                    </mat-form-field>                
+                    <mat-form-field fxFlex="48" fxFlex.lt-md="100">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="lastName" name="lastName">  
+                    </mat-form-field>                
+                    <mat-form-field fxFlex="48" fxFlex.lt-md="100">
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput formControlName="phoneNumber" name="phoneNumber">  
+                    </mat-form-field>                                    
+                    <mat-form-field fxFlex="48" fxFlex.lt-md="100">
+                        <mat-label>Email Address</mat-label>
+                        <input matInput formControlName="emailAddress" name="emailAddress">  
+                    </mat-form-field>                
+                    <mat-form-field fxFlex="48" fxFlex.lt-md="100">
+                        <mat-select placeholder="Contact Method" formControlName="preferredContactMethod" name="preferredContactMethod">
+                            <mat-option value="Email">Email</mat-option>
+                            <mat-option value="Phone">Phone</mat-option>
+                        </mat-select>
+                    </mat-form-field>                
+                </section>
+
+                <mat-card-actions>
+                    <button mat-raised-button color="accent">Save</button>
+                </mat-card-actions>    
+            </form>    
+        </mat-card-content> 
+        </mat-card>
+</div>

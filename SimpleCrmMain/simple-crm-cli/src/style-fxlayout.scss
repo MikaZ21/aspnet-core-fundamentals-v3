@@ -87,6 +87,13 @@ h4[fxLayout], h4[fxLayoutAlign],
 *[FxLayoutAlign] > *[fxFlex='8'], *[FxLayout] > *[fxFlex='8'] { flex: 1 1 8%; max-width: 8%; }
 *[FxLayoutAlign] > *[fxFlex='9'], *[FxLayout] > *[fxFlex='9'] { flex: 1 1 9%; max-width: 9%; }
 *[FxLayoutAlign] > *[fxFlex='10'], *[FxLayout] > *[fxFlex='10'] { flex: 1 1 10%; max-width: 10%; }
+*[FxLayoutAlign] > *[fxFlex='11'], *[FxLayout] > *[fxFlex='11'] { flex: 1 1 11%; max-width: 11%; }
+*[FxLayoutAlign] > *[fxFlex='12'], *[FxLayout] > *[fxFlex='12'] { flex: 1 1 12%; max-width: 12%; }
+*[FxLayoutAlign] > *[fxFlex='13'], *[FxLayout] > *[fxFlex='13'] { flex: 1 1 13%; max-width: 13%; }
+*[FxLayoutAlign] > *[fxFlex='14'], *[FxLayout] > *[fxFlex='14'] { flex: 1 1 14%; max-width: 14%; }
+*[FxLayoutAlign] > *[fxFlex='48'], *[FxLayout] > *[fxFlex='48'] { flex: 1 1 48%; max-width: 48%; }
+
+
 
 *[fxLayoutGap="1px"], *[fxLayoutGap="1px grid"] { margin: 0px -1px -1px 0px; } *[fxLayoutGap="1px"] > *, *[fxLayoutGap="1px grid"] > * { padding: 0px 1px 1px 0px; }
 *[fxLayoutGap="2px"], *[fxLayoutGap="2px grid"] { margin: 0px -2px -2px 0px; } *[fxLayoutGap="2px"] > *, *[fxLayoutGap="2px grid"] > * { padding: 0px 2px 2px 0px; }
@@ -198,6 +205,8 @@ h4[fxLayout], h4[fxLayoutAlign],
   *[FxLayoutAlign] > *[fxFlex\.lt-md='8'], *[FxLayout] > *[fxFlex\.lt-md='8'] { flex: 1 1 8%; max-width: 8%; }
   *[FxLayoutAlign] > *[fxFlex\.lt-md='9'], *[FxLayout] > *[fxFlex\.lt-md='9'] { flex: 1 1 9%; max-width: 9%; }
   *[FxLayoutAlign] > *[fxFlex\.lt-md='10'], *[FxLayout] > *[fxFlex\.lt-md='10'] { flex: 1 1 10%; max-width: 10%; }
+  *[FxLayoutAlign] > *[fxFlex\.lt-md='100'], *[FxLayout] > *[fxFlex\.lt-md='100'] { flex: 1 1 100%; max-width: 100%; }
+
    // add sizes up to 100% as needed
 }
 
