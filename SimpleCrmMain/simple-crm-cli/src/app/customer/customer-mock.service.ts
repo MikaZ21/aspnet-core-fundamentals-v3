@@ -68,7 +68,7 @@ export class CustomerMockService extends CustomerService {
   // When inserting a record, add to the customers array (see push), 
   // and then set the new array value into localStorage to ensure the 
   // new values are loaded the next time the page refreshes.
-  override insert(customer: Customer): Observable<Customer> {
+ override insert(customer: Customer): Observable<Customer> {
     customer.customerId = Math.max(...this.customers.map(x => x.customerId)) + 1;
     this.customers.push(customer);
     localStorage.setItem('customers', JSON.stringify(this.customers));
@@ -77,9 +77,14 @@ export class CustomerMockService extends CustomerService {
 
   // When updating a record, replace the prior customer array element with the 
   // updated value, and then set the new array value into localStorage.
-  override update(customer: Customer): Observable<Customer> {
+ override update(customer: Customer): Observable<Customer> {
     this.customers.map((item) => (item.customerId === customer.customerId ? customer: item));
     localStorage.setItem('customers', JSON.stringify(this.customers));
     return of(customer);
+  }
+
+  override get(customerId: number): Observable<Customer> {
+    const item = this.customers.find(x => x.customerId === customerId);
+    return of(item as Customer);
   }
 }
