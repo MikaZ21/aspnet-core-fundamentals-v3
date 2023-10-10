@@ -14,17 +14,19 @@ import { Router } from '@angular/router';
 
 export class CustomerListPageComponent implements OnInit {
 
-  customers$: Observable<Customer[]>;
+  customers$!: Observable<Customer[]>;
   displayColumns = ['name', 'phone', 'email', 'status', 'actions'];
 
   constructor(private customerService: CustomerService,
               private router: Router,
               public dialog: MatDialog
               ) {
-              this.customers$ = this.customerService.search('');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.customers$ = this.customerService.search('');
+
+  }
 
   openDetail(item: Customer): void {
     if (item) {

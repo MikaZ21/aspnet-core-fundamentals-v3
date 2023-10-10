@@ -78,7 +78,7 @@ export class CustomerMockService extends CustomerService {
   // When updating a record, replace the prior customer array element with the 
   // updated value, and then set the new array value into localStorage.
  override update(customer: Customer): Observable<Customer> {
-    this.customers.map((item) => (item.customerId === customer.customerId ? customer: item));
+    this.customers = this.customers.map((item) => (item.customerId === customer.customerId ? customer: item));
     localStorage.setItem('customers', JSON.stringify(this.customers));
     return of(customer);
   }

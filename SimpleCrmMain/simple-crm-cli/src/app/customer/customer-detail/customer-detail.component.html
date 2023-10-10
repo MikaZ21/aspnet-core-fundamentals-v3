@@ -1,5 +1,5 @@
 
-<div class="table-content">
+<div class="table-content" *ngIf="customer | async as customer">
     <mat-card>
         <mat-card-header>
             <mat-card-title fxLayout>
@@ -35,7 +35,7 @@
                 </section>
 
                 <mat-card-actions>
-                    <button mat-raised-button color="accent">Save</button>
+                    <button mat-raised-button (click)="save(customer)" color="accent">Save</button>
                 </mat-card-actions>    
             </form>    
         </mat-card-content> 
