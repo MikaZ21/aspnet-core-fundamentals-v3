@@ -13,7 +13,7 @@
         <table mat-table [dataSource] = "customers$">
             <ng-container matColumnDef = "name">
                 <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef = "let row"> {{row.firstName}}{{row.lastName}}</td>
+                <td mat-cell *matCellDef = "let row"> {{row.firstName}} {{row.lastName}}</td>
             </ng-container>
             <ng-container matColumnDef = "phone">
                 <th mat-header-cell *matHeaderCellDef> Phone </th>
@@ -21,12 +21,17 @@
             </ng-container>
             <ng-container matColumnDef = "status">
                 <th mat-header-cell *matHeaderCellDef> Status </th>
-                <td mat-cell *matCellDef = "let row"> {{row.statusCode}}</td>
+                <td mat-cell *matCellDef = "let row"> {{row.statusCode | uppercase}}</td>
             </ng-container>
             <ng-container matColumnDef = "email">
                 <th mat-header-cell *matHeaderCellDef> Email </th>
                 <td mat-cell *matCellDef = "let row"> {{row.emailAddress}}</td>
             </ng-container>
+            <ng-container matColumnDef = "lastContactDate">
+                <th mat-header-cell *matHeaderCellDef> Last Contact Date </th>
+                <td mat-cell *matCellDef = "let row"> {{row.lastContactDate | date: 'MMM d, yyyy' | titlecase}}</td>
+            </ng-container>
+
 
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef></th>
