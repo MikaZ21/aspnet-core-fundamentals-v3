@@ -28,7 +28,7 @@ export class CustomerMockService extends CustomerService {
         lastName: 'Smith',
         phoneNumber: '314-555-1234',
         emailAddress: 'john@nexulacademy.com',
-        statusCode: 'Prospect',
+        statusCode: 'N/A',
         preferredContactMethod: 'phone',
         lastContactDate: new Date().toISOString()
       },
@@ -48,7 +48,7 @@ export class CustomerMockService extends CustomerService {
         lastName: 'Zukeyama',
         phoneNumber: '314-555-0000',
         emailAddress: 'mika@example.com',
-        statusCode: 'Prospect',
+        statusCode: 'Purchased',
         preferredContactMethod: 'email',
         lastContactDate: new Date().toISOString()
       }

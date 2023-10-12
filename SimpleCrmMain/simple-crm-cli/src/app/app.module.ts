@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { CustomerModule } from './customer/customer.module';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
+import { AppIconsService } from './app-icons.service';
 
 
 @NgModule({
@@ -36,4 +37,6 @@ import {MatTableModule} from '@angular/material/table';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(iconService: AppIconsService) {}
+}
