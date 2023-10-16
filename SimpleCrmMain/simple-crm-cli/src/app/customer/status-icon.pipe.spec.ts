@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { StatusIconPipe } from './status-icon.pipe';
 
-fdescribe('StatusIconPipe', () => {
+describe('StatusIconPipe', () => {
 
   it('create an instance', () => {
     const pipe = new StatusIconPipe();
