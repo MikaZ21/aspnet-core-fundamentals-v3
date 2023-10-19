@@ -45,6 +45,8 @@ namespace SimpleCrm
             _customers.Remove(old);
             _customers.Add(customer);
         }
+
+        public void Commit() {}
     }
 }
 

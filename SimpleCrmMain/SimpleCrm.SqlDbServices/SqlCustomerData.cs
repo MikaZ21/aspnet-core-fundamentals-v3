@@ -26,11 +26,15 @@ namespace SimpleCrm.SqlDbServices
         public void Add(Customer customer)
         {
             simpleCrmDbContext.Customer.Add(customer);
-            simpleCrmDbContext.SaveChanges();
+            // simpleCrmDbContext.SaveChanges();
         }
 
         public void Update(Customer customer)
         {
+            // simpleCrmDbContext.SaveChanges();
+        }
+
+        public void Commit() {
             simpleCrmDbContext.SaveChanges();
         }
     }
