@@ -46,17 +46,20 @@ namespace SimpleCrm
             _customers.Add(customer);
         }
 
-        public void Commit() {}
-
         public List<Customer> GetByStatus(CustomerStatus status, int pageIndex, int take, string orderBy)
         {
-            throw new NotImplementedException();
+            return _customers.Where(x => x.Status == status)
+                .Skip(pageIndex * take)
+                .Take(take)
+                .ToList();
         }
 
-        public void Delete(int customerId)
+        public void Delete(Customer item)
         {
-            throw new NotImplementedException();
+            _customers = _customers.Where(x => x.Id != item.Id).ToList();
         }
+
+        public void Commit() { }
     }
 }
 

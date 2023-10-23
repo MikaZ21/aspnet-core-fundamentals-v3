@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "f/2/dpqLsoIDvKLYvzvRM3WioM1CZVrHxXybSiPMOhgk4/UtjMVbXHP50PkkDKoQE0vWNpANnQ4NbVvZnfdj2g==",
+  "dgSpecHash": "/kBktDrRkytUSAJw6Lf0tQDRUVJDdQHPTSNU5quZXlxuxSrrbLcCJBWpvWPt7A2bs6//9Pd5Lxho/NVhQ+hQQQ==",
   "success": true,
   "projectFilePath": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/SimpleCrm.Web.csproj",
   "expectedPackageFiles": [
@@ -30,6 +30,7 @@
     "/Users/mikazukeyama/.nuget/packages/pomelo.entityframeworkcore.mysql/6.0.2/pomelo.entityframeworkcore.mysql.6.0.2.nupkg.sha512",
     "/Users/mikazukeyama/.nuget/packages/system.collections.immutable/6.0.0/system.collections.immutable.6.0.0.nupkg.sha512",
     "/Users/mikazukeyama/.nuget/packages/system.diagnostics.diagnosticsource/6.0.1/system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",
+    "/Users/mikazukeyama/.nuget/packages/system.linq.dynamic.core/1.3.5/system.linq.dynamic.core.1.3.5.nupkg.sha512",
     "/Users/mikazukeyama/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []

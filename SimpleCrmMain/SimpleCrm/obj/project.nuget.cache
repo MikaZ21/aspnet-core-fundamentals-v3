@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5Jgy4XK0+RoYotMVM9ko4lfLH/0zPED7AcSxT/0dyDp9xHjgkqnGTP3H56tRYKi9SneHbMs9Yx4InQ/JeT86tA==",
+  "dgSpecHash": "mqsR7Lp0yGa4GNGwTxM21gi9xsjZoWsuMgxTcHvTDHdflGPXvrxvHvLcN1cv/McNnJnlQorz9xUvyDqaiC7TPw==",
   "success": true,
   "projectFilePath": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm/SimpleCrm.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/mikazukeyama/.nuget/packages/system.linq.dynamic.core/1.3.5/system.linq.dynamic.core.1.3.5.nupkg.sha512"
+  ],
   "logs": []
 }
