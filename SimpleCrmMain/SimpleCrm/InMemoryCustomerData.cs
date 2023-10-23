@@ -47,6 +47,16 @@ namespace SimpleCrm
         }
 
         public void Commit() {}
+
+        public List<Customer> GetByStatus(CustomerStatus status, int pageIndex, int take, string orderBy)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int customerId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
