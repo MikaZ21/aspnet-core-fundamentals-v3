@@ -33,7 +33,7 @@ namespace SimpleCrm.SqlDbServices
             // simpleCrmDbContext.SaveChanges();
         }
 
-        public List<Customer> GetByStatus(CustomerStatus status, int pageIndex, int take, string orderBy)
+        public List<Customer> GetAll(int pageIndex, int take, string orderBy)
         {
             var sortableFields = new string[] { "FIRSTNAME", "LASTNAME", "EMAILADDRESS", "PHONENUMBER", "STATUS", "LASTCONTACTDATE" };
             var fields = (orderBy ?? "").Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
@@ -50,7 +50,7 @@ namespace SimpleCrm.SqlDbServices
                     throw new ArgumentException("Invalid sort field " + x);
             }
             return simpleCrmDbContext.Customer
-                .Where(x => x.Status == status)
+                //.Where(x => x.Status == status)
                 .Skip(pageIndex * take)
                 .Take(take)
                 .ToList();

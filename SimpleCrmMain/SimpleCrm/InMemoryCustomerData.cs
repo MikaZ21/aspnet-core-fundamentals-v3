@@ -46,9 +46,9 @@ namespace SimpleCrm
             _customers.Add(customer);
         }
 
-        public List<Customer> GetByStatus(CustomerStatus status, int pageIndex, int take, string orderBy)
+        public List<Customer> GetAll(int pageIndex, int take, string orderBy)
         {
-            return _customers.Where(x => x.Status == status)
+            return _customers
                 .Skip(pageIndex * take)
                 .Take(take)
                 .ToList();

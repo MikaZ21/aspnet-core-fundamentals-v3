@@ -11,31 +11,82 @@ namespace SimpleCrm.WebApi.ApiControllers
     [Route("api/customers")]
     public class CustomerController : Controller
     {
-        [Route("")]
+        private readonly ICustomerData _customerData;
+        public CustomerController(ICustomerData customerData)
+        {
+            _customerData = customerData;
+        }
+
+        [HttpGet("")]
         public IActionResult GetAll()
         {
-            throw new NotImplementedException();
+            var customers = _customerData.GetAll(0, 50, "");
+            return Ok(customers);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            throw new NotImplementedException();
+            var customer = _customerData.Get(id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+            return Ok(customer);
         }
         [HttpPost("")]
         public IActionResult Create([FromBody] Customer model)
         {
-            throw new NotImplementedException();
+            if (model == null)
+            {
+                return BadRequest();
+            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return new ValidationFailedResult(ModelState);
+            //}
+
+            _customerData.Add(model);
+            _customerData.Commit();
+            return Ok(model);
         }
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] Customer model)
         {
-            throw new NotImplementedException();
+            if (model == null)
+            {
+                return BadRequest();
+            }
+
+            var customer = _customerData.Get(id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            customer.EmailAddress = model.EmailAddress;
+            customer.FirstName = model.FirstName;
+            customer.LastName = model.LastName;
+            customer.PhoneNumber = model.PhoneNumber;
+            customer.PreferredContactMethod = model.PreferredContactMethod;
+            customer.Status = model.Status;
+
+            _customerData.Update(customer);
+            _customerData.Commit();
+            return Ok(customer);
         }
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            throw new NotImplementedException();
+            var customer = _customerData.Get(id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            _customerData.Delete(customer);
+            _customerData.Commit();
+            return NoContent();
         }
     }
 }
