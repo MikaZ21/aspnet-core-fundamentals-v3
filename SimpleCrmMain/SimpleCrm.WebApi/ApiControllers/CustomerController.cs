@@ -19,7 +19,7 @@ namespace SimpleCrm.WebApi.ApiControllers
             _customerData = customerData;
         }
 
-        [HttpGet("")]
+        [HttpGet("")] // ./api/customers
         public IActionResult GetAll()
         {
             var customers = _customerData.GetAll(0, 50, "");
@@ -28,7 +28,7 @@ namespace SimpleCrm.WebApi.ApiControllers
             return Ok(models);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}")] // ./api/customers/:id
         public IActionResult Get(int id)
         {
             var customer = _customerData.Get(id);
@@ -39,24 +39,33 @@ namespace SimpleCrm.WebApi.ApiControllers
             var model = new CustomerDisplayViewModel(customer);
             return Ok(model);
         }
-        [HttpPost("")]
-        public IActionResult Create([FromBody] Customer model)
+        [HttpPost("")] // ./api/customers
+        public IActionResult Create([FromBody] CustomerCreateViewModel model)
         {
             if (model == null)
             {
                 return BadRequest();
             }
-            //if (!ModelState.IsValid)
-            //{
-            //    return new ValidationFailedResult(ModelState);
-            //}
+            if (!ModelState.IsValid)
+            {
+                return new UnprocessableEntity(ModelState);
+            }
 
-            _customerData.Add(model);
+            var customer = new Customer
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                EmailAddress = model.EmailAddress,
+                PhoneNumber = model.PhoneNumber,
+                PreferredContactMethod = model.PreferredContactMethod
+            };
+
+            _customerData.Add(customer);
             _customerData.Commit();
-            return Ok(model);
+            return Ok(new CustomerDisplayViewModel(customer));
         }
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Customer model)
+        [HttpPut("{id}")] // ./api/customers/:id
+        public IActionResult Update(int id, [FromBody] CustomerUpdateVeiwModel model)
         {
             if (model == null)
             {
@@ -78,9 +87,9 @@ namespace SimpleCrm.WebApi.ApiControllers
 
             _customerData.Update(customer);
             _customerData.Commit();
-            return Ok(customer);
+            return Ok(new CustomerDisplayViewModel(customer));
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}")] // ./api/customers/:id
         public IActionResult Delete(int id)
         {
             var customer = _customerData.Get(id);
