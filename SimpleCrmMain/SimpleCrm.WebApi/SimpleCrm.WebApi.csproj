@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-SimpleCrm.WebApi-e6d6ec30-f914-42f9-bbb0-c37087c6aa32</UserSecretsId>
   </PropertyGroup>

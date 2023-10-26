@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SimpleCrm.WebApi.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,7 +23,9 @@ namespace SimpleCrm.WebApi.ApiControllers
         public IActionResult GetAll()
         {
             var customers = _customerData.GetAll(0, 50, "");
-            return Ok(customers);
+            var models = customers.Select(customers => new CustomerDisplayViewModel(cus));
+
+            return Ok(models);
         }
 
         [HttpGet("{id}")]
@@ -32,7 +36,8 @@ namespace SimpleCrm.WebApi.ApiControllers
             {
                 return NotFound();
             }
-            return Ok(customer);
+            var model = new CustomerDisplayViewModel(customer);
+            return Ok(model);
         }
         [HttpPost("")]
         public IActionResult Create([FromBody] Customer model)
