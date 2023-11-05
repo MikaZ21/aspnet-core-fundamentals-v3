@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 
 namespace SimpleCrm.SqlDbServices
 {
@@ -49,8 +50,14 @@ namespace SimpleCrm.SqlDbServices
                 if (!sortableFields.Contains(x))
                     throw new ArgumentException("Invalid sort field " + x);
             }
+            if (String.IsNullOrWhiteSpace(orderBy))
+            {
+                orderBy = "LastName asc";
+            }
+
             return simpleCrmDbContext.Customer
                 //.Where(x => x.Status == status)
+                .OrderBy(orderBy)
                 .Skip(pageIndex * take)
                 .Take(take)
                 .ToList();

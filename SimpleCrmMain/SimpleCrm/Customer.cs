@@ -17,7 +17,9 @@ namespace SimpleCrm
 
 		[MinLength(7), MaxLength(12)]
 		public string PhoneNumber { get; set; }
+
 		public bool OptInNewsletter { get; set; }
+
 		public CustomerType Type { get; set; }
 
 		public string EmailAddress { get; set;}
@@ -25,6 +27,7 @@ namespace SimpleCrm
 		public InteractionMethod PreferredContactMethod { get; set; }
 
 		public CustomerStatus Status { get; set; }
+
 		public DateTime LastContactDate { get; set; }
 	}
 }

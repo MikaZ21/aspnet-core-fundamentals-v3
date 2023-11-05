@@ -18,7 +18,7 @@ namespace SimpleCrm.WebApi.Models
         public string LastContactDate { get; set; }
 
         public CustomerDisplayViewModel() { }
-        public CustomerDisplayViewModel(CustomerDisplayViewModel source)
+        public CustomerDisplayViewModel(Customer source)
         {
             if (source == null)
                 return;
@@ -27,7 +27,7 @@ namespace SimpleCrm.WebApi.Models
             LastName = source.LastName;
             PhoneNumber = source.PhoneNumber;
             EmailAddress = source.EmailAddress;
-            PreferredContactMethod = Enum.GetName(typeof(InteractionMethod), source.LastContactDate);
+            PreferredContactMethod = Enum.GetName(typeof(InteractionMethod), source.PreferredContactMethod);
             Status = Enum.GetName(typeof(CustomerStatus), source.Status);
             LastContactDate = source.LastContactDate.Year > 1 ? source.LastContactDate.ToString("s", CultureInfo.InstalledUICulture) : "";
         }

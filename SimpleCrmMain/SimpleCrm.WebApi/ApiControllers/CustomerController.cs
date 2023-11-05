@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SimpleCrm.WebApi.Filters;
 using SimpleCrm.WebApi.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -23,7 +24,7 @@ namespace SimpleCrm.WebApi.ApiControllers
         public IActionResult GetAll()
         {
             var customers = _customerData.GetAll(0, 50, "");
-            var models = customers.Select(customers => new CustomerDisplayViewModel(cus));
+            var models = customers.Select(cus => new CustomerDisplayViewModel(cus));
 
             return Ok(models);
         }
@@ -46,9 +47,11 @@ namespace SimpleCrm.WebApi.ApiControllers
             {
                 return BadRequest();
             }
+
             if (!ModelState.IsValid)
             {
-                return new UnprocessableEntity(ModelState);
+                //return UnprocessableEntity(ModelState);
+                return new ValidationFailedResult(ModelState);
             }
 
             var customer = new Customer
@@ -65,11 +68,16 @@ namespace SimpleCrm.WebApi.ApiControllers
             return Ok(new CustomerDisplayViewModel(customer));
         }
         [HttpPut("{id}")] // ./api/customers/:id
-        public IActionResult Update(int id, [FromBody] CustomerUpdateVeiwModel model)
+        public IActionResult Update(int id, [FromBody] CustomerUpdateViewModel model)
         {
             if (model == null)
             {
                 return BadRequest();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return new ValidationFailedResult(ModelState);
             }
 
             var customer = _customerData.Get(id);
@@ -83,7 +91,6 @@ namespace SimpleCrm.WebApi.ApiControllers
             customer.LastName = model.LastName;
             customer.PhoneNumber = model.PhoneNumber;
             customer.PreferredContactMethod = model.PreferredContactMethod;
-            customer.Status = model.Status;
 
             _customerData.Update(customer);
             _customerData.Commit();

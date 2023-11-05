@@ -99,6 +99,7 @@
 /Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/bin/Debug/net6.0/MySqlConnector.dll
 /Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.dll
 /Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/bin/Debug/net6.0/System.Diagnostics.DiagnosticSource.dll
+/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/bin/Debug/net6.0/System.Linq.Dynamic.Core.dll
 /Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/bin/Debug/net6.0/SimpleCrm.dll
 /Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/bin/Debug/net6.0/SimpleCrm.SqlDbServices.dll
 /Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/bin/Debug/net6.0/SimpleCrm.pdb
