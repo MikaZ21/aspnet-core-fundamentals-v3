@@ -25,35 +25,40 @@ namespace SimpleCrm.WebApi.ApiControllers
         }
 
         [HttpGet("", Name = "GetCustomers")] // ./api/customers
-        public IActionResult GetAll([FromQuery]int page = 1, [FromQuery]int take = 50)
+        public IActionResult GetAll([FromQuery]CustomerListParameters listParameters)
         {
-            if (page < 1)
+            if (listParameters.Page < 1)
                 return UnprocessableEntity(new ValidationFailedResult("Page must be 1 or greater."));
-            if (take < 1)
+            if (listParameters.Take < 1)
                 return UnprocessableEntity(new ValidationFailedResult("Take must be 1 or greater."));
-            if (take < 500)
+            if (listParameters.Take > 500)
                 return UnprocessableEntity(new ValidationFailedResult("Take must be less than 500."));
 
-
-            var customers = _customerData.GetAll(page - 1, take, "");
+            var customers = _customerData.GetAll(listParameters);
             var models = customers.Select(cus => new CustomerDisplayViewModel(cus));
 
             var pagination = new PaginationModel
             {
-                Next = customers.Count < take ? null : GetCustomerResourceUri(page + 1, take),
-                Previous = page <= 1 ? null : GetCustomerResourceUri(page - 1, take)
+                Next = CreateCustomerResourceUri(listParameters, 1),
+                Previous = CreateCustomerResourceUri(listParameters, -1)
             };
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(pagination));
 
             return Ok(models);
         }
 
-        private string GetCustomerResourceUri(int page, int take)
+        private string CreateCustomerResourceUri(CustomerListParameters listParameters, int pageAdjust)
         {
+            if (listParameters.Page + pageAdjust <= 0)
+                return null;
+
             return _linkGenerator.GetPathByName(HttpContext, "GetCustomers", values: new
             {
-                page,
-                take = take
+                take = listParameters.Take,
+                page = listParameters.Page + pageAdjust,
+                orderBy = listParameters.OrderBy,
+                lastName = listParameters.LastName,
+                term = listParameters.Term
             });
         }
 

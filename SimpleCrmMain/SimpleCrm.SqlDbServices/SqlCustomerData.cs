@@ -7,26 +7,26 @@ namespace SimpleCrm.SqlDbServices
 {
 	public class SqlCustomerData : ICustomerData
 	{
-        private readonly SimpleCrmDbContext simpleCrmDbContext;
+        private SimpleCrmDbContext _context;
 
-        public SqlCustomerData(SimpleCrmDbContext simpleCrmDbContext)
+        public SqlCustomerData(SimpleCrmDbContext context)
         {
-            this.simpleCrmDbContext = simpleCrmDbContext;
+           _context = context;
         }
 
         public Customer Get(int id)
         {
-            return simpleCrmDbContext.Customer.FirstOrDefault((item) => item.Id == id);
+            return _context.Customers.FirstOrDefault((item) => item.Id == id);
         }
 
         public IEnumerable<Customer> GetAll()
         {
-            return simpleCrmDbContext.Customer.ToList();
+            return _context.Customers.ToList();
         }
 
         public void Add(Customer customer)
         {
-            simpleCrmDbContext.Customer.Add(customer);
+            _context.Customers.Add(customer);
         }
 
         public void Update(Customer customer)
@@ -34,9 +34,11 @@ namespace SimpleCrm.SqlDbServices
             // simpleCrmDbContext.SaveChanges();
         }
 
-        public List<Customer> GetAll(int pageIndex, int take, string orderBy)
+        public List<Customer> GetAll(CustomerListParameters listParameters)
         {
             var sortableFields = new string[] { "FIRSTNAME", "LASTNAME", "EMAILADDRESS", "PHONENUMBER", "STATUS", "LASTCONTACTDATE" };
+
+            var orderBy = listParameters.OrderBy;
             var fields = (orderBy ?? "").Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (var field in fields)
             {
@@ -52,31 +54,47 @@ namespace SimpleCrm.SqlDbServices
             }
             if (String.IsNullOrWhiteSpace(orderBy))
             {
-                orderBy = "LastName asc";
+                orderBy = "LastName asc, firstname asc";
             }
 
-            return simpleCrmDbContext.Customer
-                //.Where(x => x.Status == status)
-                .OrderBy(orderBy)
-                .Skip(pageIndex * take)
-                .Take(take)
+            IQueryable<Customer> sortedResults = _context.Customers.OrderBy(orderBy); // validated above to nothing unexpected, this is OK now.
+                                                                                      // calls can be chained onto sortedResults
+
+            if (!string.IsNullOrWhiteSpace(listParameters.LastName))
+            {
+                sortedResults = sortedResults
+                    .Where(x => x.LastName.ToLowerInvariant() == listParameters.LastName.Trim().ToLowerInvariant());
+            } // The query still is not sent to the database after this line
+
+            if (!string.IsNullOrWhiteSpace(listParameters.Term))
+            {
+                sortedResults = sortedResults
+                    .Where(x => (x.FirstName + " " + x.LastName).Contains(listParameters.Term)
+                    || x.EmailAddress.Contains(listParameters.Term));
+            }
+
+            return sortedResults
+                .Skip((listParameters.Page - 1) * listParameters.Take)
+                .Take(listParameters.Take)
                 .ToList();
+
+            // Once an IQueryable is converted into an IList/List, the SQL query is finalized and sent to the database.
         }
 
         public void Delete(Customer item)
         {
-            simpleCrmDbContext.Remove(item);
+            _context.Remove(item);
         }
 
         public void Delete(int customerId)
         {
             var cust = Get(customerId);
-            simpleCrmDbContext.Remove(cust);
+            _context.Remove(cust);
         }
 
         public void Commit()
         {
-            simpleCrmDbContext.SaveChanges();
+            _context.SaveChanges();
         }
     }
 }

@@ -28,9 +28,9 @@ namespace SimpleCrm
             
         }
 
-        public IEnumerable<Customer> GetAll()
+        public List<Customer> GetAll(CustomerListParameters listParameters)
         {
-            return _customers;
+            return _customers.ToList();
         }
 
         public void Add(Customer customer)
