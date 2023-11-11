@@ -5,12 +5,53 @@
     <String>../SimpleCrm.WebApi/SimpleCrm.WebApi.csproj</String>
   </DisabledProjects>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SimpleCrm.Web/Views/Shared/_Layout.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SimpleCrm/Customer.cs">
     <Files>
-      <File FileName="SimpleCrm.Web/Views/Shared/_Layout.cshtml" Line="90" Column="1" />
+      <File FileName="SimpleCrm.WebApi/ApiControllers/CustomerController.cs" Line="39" Column="1" />
+      <File FileName="SimpleCrm/CustomerListParameters.cs" Line="14" Column="72" />
+      <File FileName="SimpleCrm.SqlDbServices/SqlCustomerData.cs" Line="75" Column="1" />
+      <File FileName="SimpleCrm.WebApi/Statup.cs" Line="55" Column="30" />
+      <File FileName="SimpleCrm.SqlDbServices/appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="SimpleCrm.SqlDbServices/appsettings.json" Line="1" Column="1" />
+      <File FileName="SimpleCrm.SqlDbServices/Properties/launchSettings.json" Line="1" Column="1" />
+      <File FileName="SimpleCrm.WebApi/Data/ApplicationDbContext.cs" Line="1" Column="1" />
+      <File FileName="SimpleCrm.WebApi/Properties/launchSettings.json" Line="1" Column="1" />
+      <File FileName="SimpleCrm.WebApi/appsettings.json" Line="1" Column="1" />
+      <File FileName="SimpleCrm.WebApi/Program.cs" Line="1" Column="1" />
+      <File FileName="SimpleCrm/Customer.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SimpleCrm">
+            <Node name="SimpleCrm" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Customer.cs" selected="True" />
+            </Node>
+            <Node name="SimpleCrm.SqlDbServices">
+              <Node name="Properties" expanded="True" />
+            </Node>
+            <Node name="SimpleCrm.WebApi">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+                <Node name="ProjectDependencies" expanded="True" />
+              </Node>
+              <Node name="ApiControllers" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Filters" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="wwwroot" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.SimpleCrm.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MultiItemStartupConfigurations />
 </Properties>

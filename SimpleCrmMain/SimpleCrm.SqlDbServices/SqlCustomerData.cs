@@ -16,17 +16,17 @@ namespace SimpleCrm.SqlDbServices
 
         public Customer Get(int id)
         {
-            return _context.Customers.FirstOrDefault((item) => item.Id == id);
+            return _context.Customer.FirstOrDefault((item) => item.Id == id);
         }
 
         public IEnumerable<Customer> GetAll()
         {
-            return _context.Customers.ToList();
+            return _context.Customer.ToList();
         }
 
         public void Add(Customer customer)
         {
-            _context.Customers.Add(customer);
+            _context.Customer.Add(customer);
         }
 
         public void Update(Customer customer)
@@ -57,13 +57,13 @@ namespace SimpleCrm.SqlDbServices
                 orderBy = "LastName asc, firstname asc";
             }
 
-            IQueryable<Customer> sortedResults = _context.Customers.OrderBy(orderBy); // validated above to nothing unexpected, this is OK now.
+            IQueryable<Customer> sortedResults = _context.Customer.OrderBy(orderBy); // validated above to nothing unexpected, this is OK now.
                                                                                       // calls can be chained onto sortedResults
 
             if (!string.IsNullOrWhiteSpace(listParameters.LastName))
             {
                 sortedResults = sortedResults
-                    .Where(x => x.LastName.ToLowerInvariant() == listParameters.LastName.Trim().ToLowerInvariant());
+                    .Where(x => x.LastName == listParameters.LastName.Trim());
             } // The query still is not sent to the database after this line
 
             if (!string.IsNullOrWhiteSpace(listParameters.Term))

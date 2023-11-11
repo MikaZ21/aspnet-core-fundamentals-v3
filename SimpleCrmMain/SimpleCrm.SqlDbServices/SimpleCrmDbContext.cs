@@ -8,7 +8,7 @@ namespace SimpleCrm.SqlDbServices
 		public SimpleCrmDbContext(DbContextOptions<SimpleCrmDbContext> options)
             : base(options) {}
 
-		public DbSet<Customer> Customers { get; set; }
+		public DbSet<Customer> Customer { get; set; }
 	}
 }
 
