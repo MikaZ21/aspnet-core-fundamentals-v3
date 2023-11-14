@@ -4,6 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-SimpleCrm.WebApi-e6d6ec30-f914-42f9-bbb0-c37087c6aa32</UserSecretsId>
+    <SpaRoot>..\simple-crm-cli\</SpaRoot>
+    <SpaRoodDest>ClientApp\</SpaRoodDest>
+    <BuildServerSideRendering>false</BuildServerSideRendering>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,4 +39,27 @@
     <Folder Include="ApiControllers\" />
     <Folder Include="Filters\" />
   </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition="'$(Configuration)' == 'Debug' And Exists('$(SpaRoot)node_modules')">
+      <Exec Command="node --version" ContinueOnError="true">
+          <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+      </Exec>
+      <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project."></Error>
+      <Message Importance="high" Text="We're restoring Angular project node modules... please wait..." />
+      <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+      <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+      <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build-all-prod" />
+      <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build-all-prod:ssr" Condition="'$(BuildServerSideRendere)' == 'ture'" />
+
+      <ItemGroup>
+          <DistFiles Include="$(SpaRoot)dist\simplecrm-cli\**; $(SpaRoot)dist-server\simplecrm-cli\**" />
+          <DistFiles Include="$(SpaRoot)node_modeles\**" Condition="'$(BuildServerSideRendere)' == 'true'" />
+          <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(Identity)')" Exclude="@(ResolvedFileToPublish)">
+          <RelativePath>$(SpaRootDest)%(DistFiles.RecursiveDir)%(DistFiles.Filename)%DistFiles.Extension)</RelativePath>
+          <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+          </ResolvedFileToPublish>
+      </ItemGroup>
+  </Target>
 </Project>

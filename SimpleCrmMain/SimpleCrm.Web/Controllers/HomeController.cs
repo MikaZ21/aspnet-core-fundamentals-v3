@@ -79,7 +79,7 @@ namespace SimpleCrm.Web.Controllers
 		public IActionResult Index()
 		{
 			var model = new HomePageViewModel();
-			model.Customers = _customerData.GetAll();
+			model.Customers = _customerData.GetAll(new CustomerListParameters { });
 			//model.CurrentMessage = _greeter.GetGreeting();
 			//var model = new CustomerModel
 			//{
