@@ -10,7 +10,6 @@ import { CustomerService } from './customer.service';
 import { CustomerMockService } from './customer-mock.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { CustomerCreateDialogComponent } from './customer-create-dialog/customer-create-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -21,7 +20,6 @@ import { CustomerDetailComponent } from './customer-detail/customer-detail.compo
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { StatusIconPipe } from './status-icon.pipe';
 
-FlexLayoutModule
 @NgModule({
   declarations: [
     CustomerListPageComponent,

@@ -1,55 +1,4 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
-//using Microsoft.AspNetCore.Builder;
-//using Microsoft.AspNetCore.Hosting;
-//using Microsoft.AspNetCore.Http;
-//using Microsoft.AspNetCore.Identity;
-//using Microsoft.Extensions.DependencyInjection;
-//using Microsoft.Extensions.Hosting;
-
-//namespace SimpleCrm.WebApi
-//{
-//    public class Startup
-//    {
-//        // This method gets called by the runtime. Use this method to add services to the container.
-//        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-//        public void ConfigureServices(IServiceCollection services)
-//        {
-//            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-//            services.AddDbContext<ApplicationDbContext>(options =>
-//                options.UseSqlite(connectionString));
-//            services.AddDatabaseDeveloperPageExceptionFilter();
-
-//            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//                .AddEntityFrameworkStores<ApplicationDbContext>();
-//            services.AddControllersWithViews();
-
-//        }
-
-//        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-//        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-//        {
-//            if (env.IsDevelopment())
-//            {
-//                app.UseDeveloperExceptionPage();
-//            }
-
-//            app.UseRouting();
-
-//            app.UseEndpoints(endpoints =>
-//            {
-//                endpoints.MapGet("/", async context =>
-//                {
-//                    await context.Response.WriteAsync("Hello World!");
-//                });
-//            });
-//        }
-//    }
-//}
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -64,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SimpleCrm.SqlDbServices;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 
 namespace SimpleCrm.WebApi
 {
@@ -96,6 +46,11 @@ namespace SimpleCrm.WebApi
             services.AddControllersWithViews();
             services.AddRazorPages();
 
+            services.AddSpaStaticFiles(config =>
+            {
+                config.RootPath = Configuration["SpaRoot"];
+            });
+
             services.AddScoped<ICustomerData, SqlCustomerData>();
         }
 
@@ -115,6 +70,7 @@ namespace SimpleCrm.WebApi
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSpaStaticFiles();
 
             app.UseRouting();
 
@@ -128,6 +84,18 @@ namespace SimpleCrm.WebApi
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            app.UseWhen(
+                context => !context.Request.Path.StartsWithSegments("/api"),
+                appBuilder => appBuilder.UseSpa(spa =>
+                {
+                    if (env.IsDevelopment())
+                    {
+                        spa.Options.SourcePath = "../simple-crm-cli";
+                        spa.Options.StartupTimeout = new TimeSpan(0, 0, 300);
+                        spa.UseAngularCliServer(npmScript: "start");
+                    }
+                }));
         }
     }
 }
