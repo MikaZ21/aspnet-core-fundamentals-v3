@@ -5,42 +5,22 @@
     <String>../SimpleCrm.WebApi/SimpleCrm.WebApi.csproj</String>
   </DisabledProjects>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SimpleCrm.WebApi/Statup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SimpleCrm.WebApi/ApiControllers/CustomerController.cs">
     <Files>
       <File FileName="SimpleCrm.WebApi/ApiControllers/CustomerController.cs" Line="120" Column="14" />
-      <File FileName="SimpleCrm.WebApi/SimpleCrm.WebApi.csproj" Line="27" Column="92" />
-      <File FileName="SimpleCrm.WebApi/appsettings.Development.json" Line="12" Column="54" />
-      <File FileName="SimpleCrm.WebApi/appsettings.Production.json" Line="13" Column="2" />
-      <File FileName="SimpleCrm.WebApi/Statup.cs" Line="48" Column="1" />
+      <File FileName="SimpleCrm.WebApi/SimpleCrm.WebApi.csproj" />
+      <File FileName="SimpleCrm.WebApi/appsettings.Development.json" />
+      <File FileName="SimpleCrm.WebApi/appsettings.Production.json" />
+      <File FileName="SimpleCrm.WebApi/Statup.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="SimpleCrm" expanded="True">
-            <Node name="Solution Items" expanded="True" />
-            <Node name="SimpleCrm">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
+          <Node name="SimpleCrm">
+            <Node name="SimpleCrm.Web" selected="True" />
+            <Node name="SimpleCrm.WebApi" expanded="True">
+              <Node name="ApiControllers" expanded="True" />
             </Node>
-            <Node name="SimpleCrm.SqlDbServices">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-                <Node name="ProjectDependencies" expanded="True" />
-              </Node>
-              <Node name="Migrations" expanded="True">
-                <Node name="CrmIdentityDb" expanded="True" />
-              </Node>
-              <Node name="Properties" expanded="True" />
-            </Node>
-            <Node name="SimpleCrm.Web">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
-              <Node name="Controllers" expanded="True" />
-              <Node name="appsettings.json" expanded="True" />
-            </Node>
-            <Node name="SimpleCrm.WebApi" selected="True" />
           </Node>
         </State>
       </Pad>
