@@ -42,12 +42,10 @@
     <Folder Include="ApiControllers\" />
     <Folder Include="Filters\" />
     <Folder Include="wwwroot\images\" />
-    <Folder Include="wwwroot\images\pexels-banking-buy-computer-34577.jpg\" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="wwwroot\images\" />
-    <Content Remove="wwwroot\images\pexels-banking-buy-computer-34577.jpg\" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition="'$(Configuration)' == 'Debug' And Exists('$(SpaRoot)node_modules')">
       <Exec Command="node --version" ContinueOnError="true">
