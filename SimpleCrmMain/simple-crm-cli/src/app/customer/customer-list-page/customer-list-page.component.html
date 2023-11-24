@@ -2,7 +2,7 @@
     <mat-card>
         <mat-card-header>
             <mat-card-title fxLayout>
-                <span>Customers</span>
+                <h1>Customers List</h1>
                 <span fxFlex></span>
                 <button fxFlex="nogrow" class="addButton" mat-mini-fab (click)="addCustomer()">
                     <mat-icon aria-label="Add Customer">add</mat-icon>
@@ -60,7 +60,7 @@
         </table>
     </mat-card>
 
-    <pre>
+    <!-- <pre>
         {{customers$ | async | json}}
-    </pre>
+    </pre> -->
 </div>

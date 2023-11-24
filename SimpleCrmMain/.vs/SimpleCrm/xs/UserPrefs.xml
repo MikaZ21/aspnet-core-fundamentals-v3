@@ -1,25 +1,56 @@
-﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{F0F610BC-9489-453C-8434-3E8E183432E0}|Default">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.SimpleCrm.WebApi PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+﻿<Properties StartupConfiguration="{F0F610BC-9489-453C-8434-3E8E183432E0}|Default" GitUserInfo="UsingGIT">
+  <MultiItemStartupConfigurations />
   <DisabledProjects>
     <String>../SimpleCrm.WebApi/SimpleCrm.WebApi.csproj</String>
   </DisabledProjects>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SimpleCrm.WebApi/ApiControllers/CustomerController.cs">
+  <MonoDevelop.Ide.ItemProperties.SimpleCrm.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.SimpleCrm.WebApi PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SimpleCrm.WebApi/package.json">
     <Files>
-      <File FileName="SimpleCrm.WebApi/ApiControllers/CustomerController.cs" Line="120" Column="14" />
-      <File FileName="SimpleCrm.WebApi/SimpleCrm.WebApi.csproj" />
+      <File FileName="SimpleCrm.WebApi/ApiControllers/CustomerController.cs" Line="108" Column="37" />
       <File FileName="SimpleCrm.WebApi/appsettings.Development.json" />
-      <File FileName="SimpleCrm.WebApi/appsettings.Production.json" />
-      <File FileName="SimpleCrm.WebApi/Statup.cs" />
+      <File FileName="SimpleCrm.WebApi/wwwroot/js/site.js" Line="1" Column="1" />
+      <File FileName="SimpleCrm.WebApi/wwwroot/css/site.css" Line="151" Column="1" />
+      <File FileName="SimpleCrm.WebApi/appsettings.json" Line="1" Column="1" />
+      <File FileName="SimpleCrm.WebApi/Statup.cs" Line="1" Column="1" />
+      <File FileName="SimpleCrm.WebApi/SimpleCrm.WebApi.csproj" Line="1" Column="1" />
+      <File FileName="SimpleCrm.WebApi/bundleconfig.json" Line="30" Column="6" />
+      <File FileName="SimpleCrm.WebApi/Views/Shared/_Layout.cshtml" Line="1" Column="1" />
+      <File FileName="SimpleCrm.WebApi/package.json" Line="8" Column="2" />
+      <File FileName="SimpleCrm.WebApi/wwwroot/css/site.min.css" Line="1" Column="1" />
+      <File FileName="SimpleCrm.Web/bundleconfig.json" Line="1" Column="1" />
+      <File FileName="SimpleCrm.WebApi/wwwroot/css/material.min.css" Line="8" Column="141142" />
+      <File FileName="SimpleCrm.WebApi/wwwroot/js/material.min.js" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="SimpleCrm">
-            <Node name="SimpleCrm.Web" selected="True" />
+          <Node name="SimpleCrm" expanded="True">
+            <Node name="SimpleCrm.Web" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+            </Node>
             <Node name="SimpleCrm.WebApi" expanded="True">
-              <Node name="ApiControllers" expanded="True" />
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+                <Node name="PackageDependencies" expanded="True" />
+                <Node name="ProjectDependencies" expanded="True" />
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="Shared" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True">
+                  <Node name="site.css" expanded="True" />
+                </Node>
+                <Node name="images" expanded="True" />
+                <Node name="js" expanded="True" />
+              </Node>
+              <Node name="appsettings.json" expanded="True" />
+              <Node name="package.json" selected="True" />
             </Node>
           </Node>
         </State>
@@ -29,6 +60,5 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.SimpleCrm.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
