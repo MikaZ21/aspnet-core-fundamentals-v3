@@ -2,15 +2,30 @@
     color: #fff;
     text-shadow: 2px 2px 4px #000000;
     height: 300px;
-    background: url('/images/Clients.png') center / cover;
+    background: url('/images/BusinessGrow.jpeg') center / cover;
 }
 
-.mdl-card__title.clientsImg {
-    color: #fff;
-    text-shadow: 2px 2px 4px #000000;
-    height: 300px;
-    background: url('/images/Clients.png') center / cover;
-}
+    .hero-wide.mdl-card.banner-buy > .mdl-card__title.bankingImg {
+        color: #fff;
+        text-shadow: 2px 2px 4px #000000;
+        height: 300px;
+        background: url('/images/pexels-banking-buy-computer-34577.jpg') center / cover;
+    }
+
+    .hero-wide.mdl-card.banner-buy > .mdl-card__title.clientsImg {
+        color: #fff;
+        text-shadow: 2px 2px 4px #000000;
+        height: 300px;
+        background: url('/images/Clients.jpeg') center / cover;
+    }
+
+    .hero-wide.mdl-card.banner-buy > .mdl-card__title.crm2 {
+        color: #fff;
+        text-shadow: 2px 2px 4px #000000;
+        height: 300px;
+        background: url('/images/CRM2.jpeg') center / cover;
+    }
+
 
 
 .hero-wide.mdl-card > .mdl-card__title h2 {
