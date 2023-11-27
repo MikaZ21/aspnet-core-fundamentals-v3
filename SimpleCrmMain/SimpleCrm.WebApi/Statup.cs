@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
-using SimpleCrm.WebApi.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -36,13 +35,19 @@ namespace SimpleCrm.WebApi
             {
                 options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr));
             });
-            services.AddDbContext<ApplicationDbContext>(options =>
-            {
-                options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr));
-            });
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //{
+            //    options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr));
+            //});
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDbContext<CrmIdentityDbContext>(options =>
+                options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr)));
+            services.AddDefaultIdentity<CrmUser>()
+                .AddDefaultUI()
+                .AddEntityFrameworkStores<CrmIdentityDbContext>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
 
@@ -60,7 +65,7 @@ namespace SimpleCrm.WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseDatabaseErrorPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -89,6 +94,7 @@ namespace SimpleCrm.WebApi
                 context => !context.Request.Path.StartsWithSegments("/api"),
                 appBuilder => appBuilder.UseSpa(spa =>
                 {
+                    spa.Options.SourcePath = "../simple-crm-cli";
                     if (env.IsDevelopment())
                     {
                         spa.Options.SourcePath = "../simple-crm-cli";
