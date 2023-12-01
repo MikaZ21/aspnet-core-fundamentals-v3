@@ -12,6 +12,7 @@
   <ItemGroup>
     <None Remove="ApiControllers\" />
     <None Remove="Filters\" />
+    <None Remove="Auth\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -28,6 +29,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.22" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="3.1.32" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="6.0.22" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="6.0.22" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,6 +44,7 @@
     <Folder Include="ApiControllers\" />
     <Folder Include="Filters\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="Auth\" />
   </ItemGroup>
 
   <ItemGroup>

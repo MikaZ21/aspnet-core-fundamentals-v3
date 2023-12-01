@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using SimpleCrm.SqlDbServices;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 
@@ -29,7 +18,21 @@ namespace SimpleCrm.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionStr = Configuration.GetConnectionString("SimpleCrmConnection");
+            var googleOptions = Configuration.GetSection(nameof(GoogleAuthSettings));
 
+            services.Configure<GoogleAuthSettings>(options =>
+            {
+                options.ClientId = googleOptions[nameof(GoogleAuthSettings.ClientId)];
+                options.ClientSecret = googleOptions[nameof(GoogleAuthSettings.ClientSecret)];
+            });
+
+            services.AddAuthentication()
+                .AddCookie(cfg => cfg.SlidingExpiration = true)
+                .AddGoogle(options =>
+                {
+                    options.ClientId = googleOptions[nameof(GoogleAuthSettings.ClientId)];
+                    options.ClientSecret = googleOptions[nameof(GoogleAuthSettings.ClientSecret)];
+                });
 
             services.AddDbContext<SimpleCrmDbContext>(options =>
             {
