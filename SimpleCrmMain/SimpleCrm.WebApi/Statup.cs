@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SimpleCrm.SqlDbServices;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using SimpleCrm.WebApi.Auth;
 
 namespace SimpleCrm.WebApi
 {
@@ -19,6 +20,7 @@ namespace SimpleCrm.WebApi
         {
             var connectionStr = Configuration.GetConnectionString("SimpleCrmConnection");
             var googleOptions = Configuration.GetSection(nameof(GoogleAuthSettings));
+            var microsoftOptions = Configuration.GetSection(nameof(MicrosoftAuthSettings));
 
             services.Configure<GoogleAuthSettings>(options =>
             {
@@ -26,12 +28,27 @@ namespace SimpleCrm.WebApi
                 options.ClientSecret = googleOptions[nameof(GoogleAuthSettings.ClientSecret)];
             });
 
+            services.Configure<MicrosoftAuthSettings>(options =>
+            {
+                options.ClientId = microsoftOptions[nameof(MicrosoftAuthSettings.ClientId)];
+                options.ClientSecret = microsoftOptions[nameof(MicrosoftAuthSettings.ClientSecret)];
+            });
+
+
             services.AddAuthentication()
                 .AddCookie(cfg => cfg.SlidingExpiration = true)
                 .AddGoogle(options =>
                 {
                     options.ClientId = googleOptions[nameof(GoogleAuthSettings.ClientId)];
                     options.ClientSecret = googleOptions[nameof(GoogleAuthSettings.ClientSecret)];
+                })
+
+                 .AddMicrosoftAccount(options =>
+                {
+                    options.ClientId = microsoftOptions[nameof(MicrosoftAuthSettings.ClientId)];
+                    options.ClientSecret = microsoftOptions[nameof(MicrosoftAuthSettings.ClientSecret)];
+                    //options.ClientId = Configuration["Authentication:Microfort:ClientId"];
+                    //options.ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
                 });
 
             services.AddDbContext<SimpleCrmDbContext>(options =>
