@@ -13,6 +13,7 @@
     <None Remove="ApiControllers\" />
     <None Remove="Filters\" />
     <None Remove="Auth\" />
+    <None Remove="Models\Auth\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -51,6 +52,7 @@
     <Folder Include="wwwroot\images\" />
     <Folder Include="Auth\" />
     <Folder Include="ApiControllers\" />
+    <Folder Include="Models\Auth\" />
   </ItemGroup>
 
   <ItemGroup>
