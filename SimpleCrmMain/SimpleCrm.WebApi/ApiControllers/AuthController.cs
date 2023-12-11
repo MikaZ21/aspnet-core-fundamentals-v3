@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SimpleCrm.WebApi.Auth;
 using SimpleCrm.WebApi.Models.Auth;
 
 namespace SimpleCrm.WebApi.ApiControllers
@@ -8,11 +9,13 @@ namespace SimpleCrm.WebApi.ApiControllers
     public class AuthController : Controller
 		{
 		private readonly UserManager<CrmUser> _userManager;
+		private readonly IJwtFactory _jwtFactory;
 
 
-		public AuthController(UserManager<CrmUser> userManager)
+		public AuthController(UserManager<CrmUser> userManager, IJwtFactory jwtFactory)
 		{
 			_userManager = userManager;
+			_jwtFactory = jwtFactory;
 		}
 
 		[HttpPost("login")]
@@ -47,6 +50,33 @@ namespace SimpleCrm.WebApi.ApiControllers
 				return await Task.FromResult(userToVerify);
 			}
 			return await Task.FromResult<CrmUser>(null);
+		}
+
+		private async Task<UserSummaryViewModel> GetUserData(CrmUser user)
+		{
+			if (user == null)
+				return null;
+
+			var roles = await _userManager.GetRolesAsync(user);
+
+			if (roles.Count == 0)
+			{
+				roles.Add("prospect");
+			}
+
+			var jwt = await _jwtFactory.GenerateEncodedToken(user.UserName,
+				_jwtFactory.GenerateClaimsIdentity(user.UserName, user.Id.ToString()));
+
+			var userModel = new UserSummaryViewModel
+			{
+				Id = user.Id,
+				Name = user.DisplayName,
+				EmailAddress = user.Email,
+				JwtToken = jwt,
+				Roles = roles.ToArray(),
+				AccountId = 0
+			};
+			return userModel;
 		}
 	}
 }
