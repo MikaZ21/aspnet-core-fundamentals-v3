@@ -1,9 +1,8 @@
-﻿
-
+﻿using Microsoft.IdentityModel.Tokens;
 
 namespace SimpleCrm.WebApi
 {
-    internal class JwtIssuerOptions
+    public class JwtIssuerOptions
     {
         public string Issuer { get; set; }
         public string Subject { get; set; }

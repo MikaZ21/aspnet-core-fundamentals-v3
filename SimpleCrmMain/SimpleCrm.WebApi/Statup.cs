@@ -3,11 +3,18 @@ using Microsoft.EntityFrameworkCore;
 using SimpleCrm.SqlDbServices;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using SimpleCrm.WebApi.Auth;
+using Microsoft.IdentityModel.Tokens;
+using System.Net.Http;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
 
 namespace SimpleCrm.WebApi
 {
     public class Startup
     {
+        private const string SecretKey = "sdkdhsHOQPdjspQNSHsjsSDQWJqzkpdnf";
+        private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -34,39 +41,69 @@ namespace SimpleCrm.WebApi
                 options.ClientSecret = microsoftOptions[nameof(MicrosoftAuthSettings.ClientSecret)];
             });
 
-
-            services.AddAuthentication()
-                .AddCookie(cfg => cfg.SlidingExpiration = true)
-                .AddGoogle(options =>
-                {
-                    options.ClientId = googleOptions[nameof(GoogleAuthSettings.ClientId)];
-                    options.ClientSecret = googleOptions[nameof(GoogleAuthSettings.ClientSecret)];
-                })
-
-                 .AddMicrosoftAccount(options =>
-                {
-                    options.ClientId = microsoftOptions[nameof(MicrosoftAuthSettings.ClientId)];
-                    options.ClientSecret = microsoftOptions[nameof(MicrosoftAuthSettings.ClientSecret)];
-                    //options.ClientId = Configuration["Authentication:Microfort:ClientId"];
-                    //options.ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
-                });
-
             services.AddDbContext<SimpleCrmDbContext>(options =>
-            {
-                options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr));
-            });
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //{
-            //    options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr));
-            //});
-
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+                options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr)));
             services.AddDbContext<CrmIdentityDbContext>(options =>
                 options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr)));
-            services.AddDefaultIdentity<CrmUser>()
-                .AddDefaultUI()
-                .AddEntityFrameworkStores<CrmIdentityDbContext>();
+
+            var secretKey = Configuration["Tokens:SigningSecretKey"];
+            _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
+
+            var jwtOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
+            services.Configure<JwtIssuerOptions>(options =>
+            {
+                options.Issuer = jwtOptions[nameof(JwtIssuerOptions.Issuer)];
+                options.Audience = jwtOptions[nameof(JwtIssuerOptions.Audience)];
+                options.SigningCredentials = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256);
+            });
+
+            var tokenValidationPrms = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidIssuer = jwtOptions[nameof(JwtIssuerOptions.Issuer)],
+                ValidateAudience = true,
+                ValidAudience = jwtOptions[nameof(JwtIssuerOptions.Audience)],
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = _signingKey,
+                RequireExpirationTime = false,
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero
+            };
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(configureOptions =>
+             {
+                 configureOptions.ClaimsIssuer = jwtOptions[nameof(JwtIssuerOptions.Issuer)];
+                 configureOptions.TokenValidationParameters = tokenValidationPrms;
+                 configureOptions.SaveToken = true;
+             });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ApiUser", policy => policy.RequireClaim(
+                    Constants.JwtClaimIdentifiers.Rol,
+                    Constants.JwtClaims.ApiAccess
+                    ));
+            });
+
+            var identityBuilder = services.AddIdentityCore<CrmUser>(o =>
+            {
+
+            });
+            identityBuilder = new IdentityBuilder(
+                identityBuilder.UserType,
+                typeof(IdentityRole),
+                identityBuilder.Services);
+            identityBuilder.AddEntityFrameworkStores<CrmIdentityDbContext>();
+            identityBuilder.AddRoleValidator<RoleValidator<IdentityRole>>();
+            identityBuilder.AddRoleManager<RoleManager<IdentityRole>>();
+            identityBuilder.AddSignInManager<SignInManager<CrmUser>>();
+            identityBuilder.AddDefaultTokenProviders();
+
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -75,6 +112,8 @@ namespace SimpleCrm.WebApi
             {
                 config.RootPath = Configuration["SpaRoot"];
             });
+
+            services.AddSingleton<IJwtFactory, JwtFactory>();
 
             services.AddScoped<ICustomerData, SqlCustomerData>();
         }

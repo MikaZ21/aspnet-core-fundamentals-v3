@@ -1,53 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SimpleCrm.WebApi.Filters;
 using SimpleCrm.WebApi.Models;
-using Newtonsoft.Json;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.AspNetCore.Authorization;
 
 namespace SimpleCrm.WebApi.ApiControllers
 {
     [Route("api/customers")]
+    [Authorize(Policy = "ApiUser")]
     public class CustomerController : Controller
     {
         private readonly ICustomerData _customerData;
         private readonly LinkGenerator _linkGenerator;
 
-        public CustomerController(ICustomerData customerData, LinkGenerator linkGenerator)
+        public CustomerController(ICustomerData customerData,
+            LinkGenerator linkGenerator)
         {
             _customerData = customerData;
             _linkGenerator = linkGenerator;
         }
 
-        [HttpGet("", Name = "GetCustomers")] // ./api/customers
-        public IActionResult GetAll([FromQuery]CustomerListParameters listParameters)
+        /// <summary>
+        /// Gets all customers visible in the account of the current user
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("", Name = "GetCustomers")] //  ./api/customers
+        public IActionResult GetAll([FromQuery] CustomerListParameters listParameters)
         {
             if (listParameters.Page < 1)
                 return UnprocessableEntity(new ValidationFailedResult("Page must be 1 or greater."));
             if (listParameters.Take < 1)
                 return UnprocessableEntity(new ValidationFailedResult("Take must be 1 or greater."));
             if (listParameters.Take > 500)
-                return UnprocessableEntity(new ValidationFailedResult("Take must be less than 500."));
+                return UnprocessableEntity(new ValidationFailedResult("Take cannot be larger than 500."));
 
             var customers = _customerData.GetAll(listParameters);
-            var models = customers.Select(cus => new CustomerDisplayViewModel(cus));
+            var models = customers.Select(c => new CustomerDisplayViewModel(c));
 
             var pagination = new PaginationModel
             {
-                Next = CreateCustomerResourceUri(listParameters, 1),
-                Previous = CreateCustomerResourceUri(listParameters, -1)
+                Previous = CreateCustomersResourceUri(listParameters, -1),
+                Next = CreateCustomersResourceUri(listParameters, 1)
             };
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(pagination));
 
             return Ok(models);
         }
-
-        private string CreateCustomerResourceUri(CustomerListParameters listParameters, int pageAdjust)
+        private string CreateCustomersResourceUri(CustomerListParameters listParameters, int pageAdjust)
         {
             if (listParameters.Page + pageAdjust <= 0)
                 return null;
@@ -62,7 +61,12 @@ namespace SimpleCrm.WebApi.ApiControllers
             });
         }
 
-        [HttpGet("{id}")] // ./api/customers/:id
+        /// <summary>
+        /// Retrieves a single customer by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")] //  ./api/customers/:id
         public IActionResult Get(int id)
         {
             var customer = _customerData.Get(id);
@@ -73,17 +77,15 @@ namespace SimpleCrm.WebApi.ApiControllers
             var model = new CustomerDisplayViewModel(customer);
             return Ok(model);
         }
-        [HttpPost("")] // ./api/customers
+        [HttpPost("")] //  ./api/customers
         public IActionResult Create([FromBody] CustomerCreateViewModel model)
         {
             if (model == null)
             {
                 return BadRequest();
             }
-
             if (!ModelState.IsValid)
             {
-                //return UnprocessableEntity(ModelState);
                 return new ValidationFailedResult(ModelState);
             }
 
@@ -98,16 +100,15 @@ namespace SimpleCrm.WebApi.ApiControllers
 
             _customerData.Add(customer);
             _customerData.Commit();
-            return Ok(new CustomerDisplayViewModel(customer));
+            return Ok(new CustomerDisplayViewModel(customer)); //includes new auto-assigned id
         }
-        [HttpPut("{id}")] // ./api/customers/:id
+        [HttpPut("{id}")] //  ./api/customers/:id
         public IActionResult Update(int id, [FromBody] CustomerUpdateViewModel model)
         {
             if (model == null)
             {
                 return BadRequest();
             }
-
             if (!ModelState.IsValid)
             {
                 return new ValidationFailedResult(ModelState);
@@ -119,6 +120,7 @@ namespace SimpleCrm.WebApi.ApiControllers
                 return NotFound();
             }
 
+            //update only editable properties from model
             customer.EmailAddress = model.EmailAddress;
             customer.FirstName = model.FirstName;
             customer.LastName = model.LastName;
@@ -127,9 +129,9 @@ namespace SimpleCrm.WebApi.ApiControllers
 
             _customerData.Update(customer);
             _customerData.Commit();
-            return Ok(new CustomerDisplayViewModel(customer));
+            return Ok(new CustomerDisplayViewModel(customer)); //server version, updated per request
         }
-        [HttpDelete("{id}")] // ./api/customers/:id
+        [HttpDelete("{id}")] //  ./api/customers/:id
         public IActionResult Delete(int id)
         {
             var customer = _customerData.Get(id);
@@ -137,11 +139,9 @@ namespace SimpleCrm.WebApi.ApiControllers
             {
                 return NotFound();
             }
-
             _customerData.Delete(customer);
             _customerData.Commit();
             return NoContent();
         }
     }
 }
-
