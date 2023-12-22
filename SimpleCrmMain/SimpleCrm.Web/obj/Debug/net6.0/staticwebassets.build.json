@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "q6Gij4Ti2ZhyntA9CZNkA6vrP5Lj2Hvbx0YxFQmmj5I=",
+  "Hash": "XjzGwrAs0LMVik9z0RaSKUgFPwyaQKxRUhgk+LUhDCI=",
   "Source": "SimpleCrm.Web",
   "BasePath": "_content/SimpleCrm.Web",
   "Mode": "Default",
@@ -63,23 +63,6 @@
       "OriginalItemSpec": "wwwroot/css/vendor.min 2.css"
     },
     {
-      "Identity": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/wwwroot/css/vendor.min.css",
-      "SourceId": "SimpleCrm.Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/wwwroot/",
-      "BasePath": "_content/SimpleCrm.Web",
-      "RelativePath": "css/vendor.min.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/vendor.min.css"
-    },
-    {
       "Identity": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/wwwroot/images/desk-background-dark.jpg",
       "SourceId": "SimpleCrm.Web",
       "SourceType": "Discovered",
@@ -129,40 +112,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/jquery.validate.unobtrusive.js"
-    },
-    {
-      "Identity": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/wwwroot/js/vendor-post.min.js",
-      "SourceId": "SimpleCrm.Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/wwwroot/",
-      "BasePath": "_content/SimpleCrm.Web",
-      "RelativePath": "js/vendor-post.min.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/vendor-post.min.js"
-    },
-    {
-      "Identity": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/wwwroot/js/vendor.min.js",
-      "SourceId": "SimpleCrm.Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.Web/wwwroot/",
-      "BasePath": "_content/SimpleCrm.Web",
-      "RelativePath": "js/vendor.min.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/vendor.min.js"
     }
   ]
 }

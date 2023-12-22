@@ -4,7 +4,6 @@ using SimpleCrm.SqlDbServices;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using SimpleCrm.WebApi.Auth;
 using Microsoft.IdentityModel.Tokens;
-using System.Net.Http;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 
@@ -14,6 +13,7 @@ namespace SimpleCrm.WebApi
     {
         private const string SecretKey = "sdkdhsHOQPdjspQNSHsjsSDQWJqzkpdnf";
         private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
+
 
         public Startup(IConfiguration configuration)
         {
@@ -25,9 +25,9 @@ namespace SimpleCrm.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionStr = Configuration.GetConnectionString("SimpleCrmConnection");
+            //var connectionStr = Configuration.GetConnectionString("SimpleCrmConnection");
             var googleOptions = Configuration.GetSection(nameof(GoogleAuthSettings));
-            var microsoftOptions = Configuration.GetSection(nameof(MicrosoftAuthSettings));
+            //var microsoftOptions = Configuration.GetSection(nameof(MicrosoftAuthSettings));
 
             services.Configure<GoogleAuthSettings>(options =>
             {
@@ -35,6 +35,13 @@ namespace SimpleCrm.WebApi
                 options.ClientSecret = googleOptions[nameof(GoogleAuthSettings.ClientSecret)];
             });
 
+            //services.Configure<MicrosoftAuthSettings>(options =>
+            //{
+            //    options.ClientId = microsoftOptions[nameof(MicrosoftAuthSettings.ClientId)];
+            //    options.ClientSecret = microsoftOptions[nameof(MicrosoftAuthSettings.ClientSecret)];
+            //});
+
+            var microsoftOptions = Configuration.GetSection(nameof(MicrosoftAuthSettings));
             services.Configure<MicrosoftAuthSettings>(options =>
             {
                 options.ClientId = microsoftOptions[nameof(MicrosoftAuthSettings.ClientId)];
@@ -42,12 +49,12 @@ namespace SimpleCrm.WebApi
             });
 
             services.AddDbContext<SimpleCrmDbContext>(options =>
-                options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr)));
+                options.UseMySql(Configuration.GetConnectionString("SimpleCrmConnection")));
             services.AddDbContext<CrmIdentityDbContext>(options =>
-                options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr)));
+                options.UseMySql(Configuration.GetConnectionString("SimpleCrmConnection")));
 
-            var secretKey = Configuration["Tokens:SigningSecretKey"];
-            _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
+            //var secretKey = Configuration["Tokens:SigningSecretKey"];
+            //_signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
 
             var jwtOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
             services.Configure<JwtIssuerOptions>(options =>
@@ -153,7 +160,6 @@ namespace SimpleCrm.WebApi
                 context => !context.Request.Path.StartsWithSegments("/api"),
                 appBuilder => appBuilder.UseSpa(spa =>
                 {
-                    spa.Options.SourcePath = "../simple-crm-cli";
                     if (env.IsDevelopment())
                     {
                         spa.Options.SourcePath = "../simple-crm-cli";
