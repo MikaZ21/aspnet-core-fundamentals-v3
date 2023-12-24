@@ -35,12 +35,6 @@ namespace SimpleCrm.WebApi
                 options.ClientSecret = googleOptions[nameof(GoogleAuthSettings.ClientSecret)];
             });
 
-            //services.Configure<MicrosoftAuthSettings>(options =>
-            //{
-            //    options.ClientId = microsoftOptions[nameof(MicrosoftAuthSettings.ClientId)];
-            //    options.ClientSecret = microsoftOptions[nameof(MicrosoftAuthSettings.ClientSecret)];
-            //});
-
             var microsoftOptions = Configuration.GetSection(nameof(MicrosoftAuthSettings));
             services.Configure<MicrosoftAuthSettings>(options =>
             {

@@ -1,16 +1,21 @@
 ﻿<Properties StartupConfiguration="{F0F610BC-9489-453C-8434-3E8E183432E0}|Default" GitUserInfo="UsingGIT">
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.SimpleCrm.WebApi PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="SimpleCrm.WebApi/ApiControllers/AuthController.cs">
+    <Files>
+      <File FileName="SimpleCrm.WebApi/ApiControllers/AuthController.cs" Line="188" Column="1" />
+      <File FileName="SimpleCrm.WebApi/ApiControllers/CustomerController.cs" Line="1" Column="1" />
+      <File FileName="SimpleCrm.WebApi/appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="SimpleCrm.WebApi/appsettings.Production.json" Line="29" Column="30" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="SimpleCrm" expanded="True">
-            <Node name="SimpleCrm.WebApi" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
+          <Node name="SimpleCrm">
+            <Node name="SimpleCrm.WebApi">
+              <Node name="ApiControllers">
+                <Node name="AuthController.cs" selected="True" />
               </Node>
-              <Node name="ApiControllers" expanded="True" />
               <Node name="Auth" expanded="True" />
               <Node name="Models" expanded="True">
                 <Node name="Auth" expanded="True" />
