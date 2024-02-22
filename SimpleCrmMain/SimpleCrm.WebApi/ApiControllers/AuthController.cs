@@ -7,6 +7,7 @@ using SimpleCrm.WebApi.Models.Auth;
 
 namespace SimpleCrm.WebApi.ApiControllers
 {
+    [Route("api/auth")]
     public class AuthController : Controller
     {
         private readonly UserManager<CrmUser> _userManager;
@@ -122,7 +123,7 @@ namespace SimpleCrm.WebApi.ApiControllers
         }
 
         [Authorize(Policy = "ApiUser")]
-        [HttpPost]
+        [HttpPost] // POST api/auth/verify
         [Route("verify")]
         public async Task<IActionResult> Verify()
         {
@@ -181,6 +182,35 @@ namespace SimpleCrm.WebApi.ApiControllers
                 AccountId = 0
             };
             return userModel;
+        }
+
+        [HttpPost]
+        [Route("register")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Register([FromBody] RegisterUserViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return UnprocessableEntity(ModelState);
+            }
+
+            var user = new CrmUser
+            {
+                DisplayName = model.Name,
+                UserName = model.EmailAddress,
+                Email = model.EmailAddress
+            };
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (!result.Succeeded)
+            {
+                return UnprocessableEntity(result.Errors.Select(x => x.Description));
+            }
+
+            _logger.LogInformation("User created a new account with password.");
+            var identity = await Authenticate(model.EmailAddress, model.Password);
+
+            var userModel = await GetUserData(identity);
+            return Ok(userModel);
         }
     }
 }

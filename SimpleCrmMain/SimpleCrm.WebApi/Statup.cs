@@ -25,17 +25,17 @@ namespace SimpleCrm.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //var connectionStr = Configuration.GetConnectionString("SimpleCrmConnection");
+            var connectionStr = Configuration.GetConnectionString("SimpleCrmConnection");
             var googleOptions = Configuration.GetSection(nameof(GoogleAuthSettings));
-            //var microsoftOptions = Configuration.GetSection(nameof(MicrosoftAuthSettings));
+            var microsoftOptions = Configuration.GetSection(nameof(MicrosoftAuthSettings));
 
             services.Configure<GoogleAuthSettings>(options =>
             {
                 options.ClientId = googleOptions[nameof(GoogleAuthSettings.ClientId)];
+
                 options.ClientSecret = googleOptions[nameof(GoogleAuthSettings.ClientSecret)];
             });
 
-            var microsoftOptions = Configuration.GetSection(nameof(MicrosoftAuthSettings));
             services.Configure<MicrosoftAuthSettings>(options =>
             {
                 options.ClientId = microsoftOptions[nameof(MicrosoftAuthSettings.ClientId)];
@@ -43,9 +43,9 @@ namespace SimpleCrm.WebApi
             });
 
             services.AddDbContext<SimpleCrmDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("SimpleCrmConnection")));
+                options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr)));
             services.AddDbContext<CrmIdentityDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("SimpleCrmConnection")));
+                options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr)));
 
             //var secretKey = Configuration["Tokens:SigningSecretKey"];
             //_signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
@@ -125,7 +125,7 @@ namespace SimpleCrm.WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                //app.UseDatabaseErrorPage();
             }
             else
             {
