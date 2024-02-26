@@ -6,6 +6,7 @@ using SimpleCrm.WebApi.Auth;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
+using Microsoft.AspNetCore.Builder;
 
 namespace SimpleCrm.WebApi
 {
@@ -46,6 +47,9 @@ namespace SimpleCrm.WebApi
                 options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr)));
             services.AddDbContext<CrmIdentityDbContext>(options =>
                 options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr)));
+
+            //services.AddOpenApiDocument();
+            services.AddSwaggerDocument();
 
             //var secretKey = Configuration["Tokens:SigningSecretKey"];
             //_signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
@@ -136,6 +140,9 @@ namespace SimpleCrm.WebApi
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseOpenApi();
+            app.UseSwaggerUi();
 
             app.UseRouting();
 
