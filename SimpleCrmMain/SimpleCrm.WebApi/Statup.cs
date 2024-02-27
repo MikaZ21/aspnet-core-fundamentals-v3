@@ -7,6 +7,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using Microsoft.AspNetCore.Builder;
+using NSwag.Generation.Processors.Security;
+using NSwag;
 
 namespace SimpleCrm.WebApi
 {
@@ -48,8 +50,23 @@ namespace SimpleCrm.WebApi
             services.AddDbContext<CrmIdentityDbContext>(options =>
                 options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr)));
 
-            //services.AddOpenApiDocument();
-            services.AddSwaggerDocument();
+            services.AddOpenApiDocument(options =>
+            {
+                options.DocumentName = "v1";
+                options.Title = "Simple CRM";
+                options.Version = "1.0";
+                options.DocumentProcessors.Add(new SecurityDefinitionAppender("JWT token",
+                    new List<string>(),
+                    new OpenApiSecurityScheme
+                    {
+                        In = OpenApiSecurityApiKeyLocation.Header,
+                        Name = "Authorization",
+                        Type = OpenApiSecuritySchemeType.ApiKey
+                    }
+                ));
+                options.OperationProcessors.Add(new OperationSecurityScopeProcessor());
+            });
+            //services.AddSwaggerDocument();
 
             //var secretKey = Configuration["Tokens:SigningSecretKey"];
             //_signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
