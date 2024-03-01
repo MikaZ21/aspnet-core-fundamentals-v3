@@ -19,9 +19,9 @@ namespace SimpleCrm.WebApi.ApiControllers
         public AuthController(
             UserManager<CrmUser> userManager,
             IJwtFactory jwtFactory,
-            IOptions<MicrosoftAuthSettings> microsoftAuthSettings,
             IConfiguration configuration,
-            ILogger<AuthController> logger
+            ILogger<AuthController> logger,
+            IOptions<MicrosoftAuthSettings> microsoftAuthSettings
             )
         {
             _userManager = userManager;
@@ -112,7 +112,7 @@ namespace SimpleCrm.WebApi.ApiControllers
             var user = await Authenticate(credentials.EmailAddress, credentials.Password);
             if (user == null)
             {
-                return UnprocessableEntity("Invalid username or password.");
+                return Unauthorized("Invalid username or password.");
             }
 
             // TODO: add GetUserData method (see lesson below)

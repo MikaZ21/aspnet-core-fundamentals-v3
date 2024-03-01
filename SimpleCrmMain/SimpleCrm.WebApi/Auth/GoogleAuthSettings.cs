@@ -1,5 +1,5 @@
 ﻿using System;
-namespace SimpleCrm.WebApi
+namespace SimpleCrm.WebApi.Auth
 {
 	public class GoogleAuthSettings
 	{

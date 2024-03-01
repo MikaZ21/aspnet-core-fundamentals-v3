@@ -9,12 +9,13 @@ using System.Text;
 using Microsoft.AspNetCore.Builder;
 using NSwag.Generation.Processors.Security;
 using NSwag;
+using NSwag.AspNetCore;
 
 namespace SimpleCrm.WebApi
 {
     public class Startup
     {
-        private const string SecretKey = "sdkdhsHOQPdjspQNSHsjsSDQWJqzkpdnf";
+        private const string SecretKey = "sdkdhsHOQPdjspQNSHsjsSDQWJqzkpdn";
         private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
 
 
@@ -45,6 +46,8 @@ namespace SimpleCrm.WebApi
                 options.ClientSecret = microsoftOptions[nameof(MicrosoftAuthSettings.ClientSecret)];
             });
 
+            services.AddResponseCaching();
+
             services.AddDbContext<SimpleCrmDbContext>(options =>
                 options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr)));
             services.AddDbContext<CrmIdentityDbContext>(options =>
@@ -64,12 +67,12 @@ namespace SimpleCrm.WebApi
                         Type = OpenApiSecuritySchemeType.ApiKey
                     }
                 ));
-                options.OperationProcessors.Add(new OperationSecurityScopeProcessor());
+                options.OperationProcessors.Add(new OperationSecurityScopeProcessor("JWT token"));
             });
             //services.AddSwaggerDocument();
 
             //var secretKey = Configuration["Tokens:SigningSecretKey"];
-            //_signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
+            //var _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
 
             var jwtOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
             services.Configure<JwtIssuerOptions>(options =>
@@ -102,6 +105,7 @@ namespace SimpleCrm.WebApi
                  configureOptions.ClaimsIssuer = jwtOptions[nameof(JwtIssuerOptions.Issuer)];
                  configureOptions.TokenValidationParameters = tokenValidationPrms;
                  configureOptions.SaveToken = true;
+                 configureOptions.IncludeErrorDetails = true;
              });
 
             services.AddAuthorization(options =>
@@ -155,16 +159,31 @@ namespace SimpleCrm.WebApi
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.UseResponseCaching();
+
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            app.UseOpenApi();
-            app.UseSwaggerUi();
+            //app.UseOpenApi();
+            //app.UseSwaggerUi();
 
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseOpenApi();
+            app.UseSwaggerUi3(settings =>
+            {
+                var microsoftOptions = Configuration.GetSection(nameof(MicrosoftAuthSettings));
+                settings.OAuth2Client = new OAuth2ClientSettings
+                {
+                    ClientId = microsoftOptions[nameof(MicrosoftAuthSettings.ClientId)],
+                    ClientSecret = microsoftOptions[nameof(MicrosoftAuthSettings.ClientSecret)],
+                    AppName = "Simple CRM",
+                    Realm = "Nexul Academy"
+                };
+            });
 
             app.UseEndpoints(endpoints =>
             {
