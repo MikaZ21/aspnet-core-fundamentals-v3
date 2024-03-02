@@ -1,18 +1,18 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{F0F610BC-9489-453C-8434-3E8E183432E0}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SimpleCrm.WebApi/Auth/JwtFactory.cs">
+  <MonoDevelop.Ide.ItemProperties.SimpleCrm.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.SimpleCrm.WebApi PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SimpleCrm.WebApi/SimpleCrm.WebApi.csproj">
     <Files>
-      <File FileName="SimpleCrm.WebApi/Auth/JwtFactory.cs" Line="4" Column="33" />
-      <File FileName="SimpleCrm.WebApi/Statup.cs" Line="75" Column="17" />
-      <File FileName="SimpleCrm.WebApi/ApiControllers/CustomerController.cs" Line="14" Column="55" />
-      <File FileName="SimpleCrm.WebApi/Auth/JwtIssuerOptions.cs" Line="1" Column="1" />
-      <File FileName="SimpleCrm.WebApi/Auth/IJwtFactory.cs" Line="1" Column="1" />
-      <File FileName="SimpleCrm.WebApi/ApiControllers/AuthController.cs" Line="1" Column="1" />
+      <File FileName="SimpleCrm.WebApi/SimpleCrm.WebApi.csproj" Line="46" Column="60" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="SimpleCrm" expanded="True">
-            <Node name="SimpleCrm.WebApi" expanded="True">
+            <Node name="SimpleCrm.WebApi">
               <Node name="Dependencies" expanded="True">
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
@@ -20,12 +20,13 @@
               <Node name="Areas" expanded="True">
                 <Node name="Identity" expanded="True" />
               </Node>
-              <Node name="Auth" expanded="True">
-                <Node name="JwtFactory.cs" selected="True" />
-              </Node>
+              <Node name="Auth" expanded="True" />
               <Node name="Controllers" expanded="True" />
               <Node name="Filters" expanded="True" />
-              <Node name="wwwroot" expanded="True">
+              <Node name="Models" expanded="True">
+                <Node name="Auth" expanded="True" />
+              </Node>
+              <Node name="wwwroot">
                 <Node name="lib" expanded="True">
                   <Node name="jquery" expanded="True">
                     <Node name="dist" expanded="True" />
@@ -39,15 +40,10 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.SimpleCrm.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <DisabledProjects>
-    <String>../SimpleCrm.WebApi/SimpleCrm.WebApi.csproj</String>
-  </DisabledProjects>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.SimpleCrm.WebApi PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <DisabledProjects>
+    <String>../SimpleCrm.WebApi/SimpleCrm.WebApi.csproj</String>
+  </DisabledProjects>
 </Properties>
