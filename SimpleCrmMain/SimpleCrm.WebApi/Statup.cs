@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Builder;
 using NSwag.Generation.Processors.Security;
 using NSwag;
 using NSwag.AspNetCore;
+using Microsoft.Net.Http.Headers;
 
 namespace SimpleCrm.WebApi
 {
@@ -45,8 +46,6 @@ namespace SimpleCrm.WebApi
                 options.ClientId = microsoftOptions[nameof(MicrosoftAuthSettings.ClientId)];
                 options.ClientSecret = microsoftOptions[nameof(MicrosoftAuthSettings.ClientSecret)];
             });
-
-            services.AddResponseCaching();
 
             services.AddDbContext<SimpleCrmDbContext>(options =>
                 options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr)));
@@ -132,6 +131,7 @@ namespace SimpleCrm.WebApi
 
 
             services.AddControllersWithViews();
+            services.AddResponseCaching();
             services.AddRazorPages();
 
             services.AddSpaStaticFiles(config =>
@@ -158,16 +158,24 @@ namespace SimpleCrm.WebApi
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
-            app.UseResponseCaching();
 
-            app.UseStaticFiles();
+            app.UseHttpsRedirection();
+
+            app.UseStaticFiles(new StaticFileOptions
+                {
+                OnPrepareResponse = ctx =>
+                {
+                    const int durationInSeconds = 60 * 60 * 24; // 1 day
+                    ctx.Context.Response.Headers[HeaderNames.CacheControl] = "public, max-age=" + durationInSeconds;
+                }
+            });
             app.UseSpaStaticFiles();
 
             //app.UseOpenApi();
             //app.UseSwaggerUi();
 
             app.UseRouting();
+            app.UseResponseCaching();
 
             app.UseAuthentication();
             app.UseAuthorization();

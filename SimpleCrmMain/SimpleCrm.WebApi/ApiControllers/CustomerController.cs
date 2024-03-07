@@ -25,7 +25,7 @@ namespace SimpleCrm.WebApi.ApiControllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("", Name = "GetCustomers")] //  ./api/customers
-        [ResponseCache(Duration = 30, Location = ResponseCacheLocation.Any)]
+        //[ResponseCache(Duration = 3000, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new[] { "*" })]
         public IActionResult GetAll([FromQuery] CustomerListParameters listParameters)
         {
             if (listParameters.Page < 1)
