@@ -44,6 +44,7 @@ namespace SimpleCrm.WebApi.ApiControllers
                 Next = CreateCustomersResourceUri(listParameters, 1)
             };
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(pagination));
+            Response.Headers.Add("ETag", "\"abc\"");
 
             return Ok(models);
         }
@@ -69,6 +70,7 @@ namespace SimpleCrm.WebApi.ApiControllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")] //  ./api/customers/:id
+        [ResponseCache(Duration = 30, Location = ResponseCacheLocation.Any)]
         public IActionResult Get(int id)
         {
             var customer = _customerData.Get(id);
@@ -76,9 +78,12 @@ namespace SimpleCrm.WebApi.ApiControllers
             {
                 return NotFound();
             }
+            Response.Headers.Add("ETag", "\"" + customer.LastContactDate.ToString() + "\"");
+
             var model = new CustomerDisplayViewModel(customer);
             return Ok(model);
         }
+
         [HttpPost("")] //  ./api/customers
         public IActionResult Create([FromBody] CustomerCreateViewModel model)
         {
@@ -97,13 +102,18 @@ namespace SimpleCrm.WebApi.ApiControllers
                 LastName = model.LastName,
                 EmailAddress = model.EmailAddress,
                 PhoneNumber = model.PhoneNumber,
-                PreferredContactMethod = model.PreferredContactMethod
+                PreferredContactMethod = model.PreferredContactMethod,
+                LastContactDate = DateTime.UtcNow
             };
 
             _customerData.Add(customer);
             _customerData.Commit();
+
+            Response.Headers.Add("ETag", "\"" + customer.LastContactDate.ToString() + "\"");
+
             return Ok(new CustomerDisplayViewModel(customer)); //includes new auto-assigned id
         }
+
         [HttpPut("{id}")] //  ./api/customers/:id
         public IActionResult Update(int id, [FromBody] CustomerUpdateViewModel model)
         {
@@ -122,17 +132,27 @@ namespace SimpleCrm.WebApi.ApiControllers
                 return NotFound();
             }
 
+            string ifMatch = Request.Headers["If-Match"];
+            if (ifMatch != customer.LastContactDate.ToString())
+            {
+                return StatusCode(422, "Customer has been changed by another user since it was loaded. Reload and try again.");
+            }
+
             //update only editable properties from model
             customer.EmailAddress = model.EmailAddress;
             customer.FirstName = model.FirstName;
             customer.LastName = model.LastName;
             customer.PhoneNumber = model.PhoneNumber;
             customer.PreferredContactMethod = model.PreferredContactMethod;
+            customer.LastContactDate = DateTime.UtcNow;
+
 
             _customerData.Update(customer);
             _customerData.Commit();
+
             return Ok(new CustomerDisplayViewModel(customer)); //server version, updated per request
         }
+
         [HttpDelete("{id}")] //  ./api/customers/:id
         public IActionResult Delete(int id)
         {
