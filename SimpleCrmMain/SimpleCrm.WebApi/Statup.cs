@@ -11,6 +11,7 @@ using NSwag.Generation.Processors.Security;
 using NSwag;
 using NSwag.AspNetCore;
 using Microsoft.Net.Http.Headers;
+using System.Text.Json.Serialization;
 
 namespace SimpleCrm.WebApi
 {
@@ -132,6 +133,15 @@ namespace SimpleCrm.WebApi
 
             services.AddControllersWithViews();
             services.AddResponseCaching();
+
+            services.AddControllersWithViews().AddJsonOptions(options =>
+            {
+                var settings = options.JsonSerializerOptions;
+
+                settings.PropertyNameCaseInsensitive = true;
+                settings.Converters.Add(new JsonStringEnumConverter());
+            });
+
             services.AddRazorPages();
 
             services.AddSpaStaticFiles(config =>
