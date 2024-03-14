@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../customer.model';
 import { CustomerService } from '../customer.service';
-import { Observable } from 'rxjs';
+import { Observable, debounceTime, startWith, switchMap } from 'rxjs';
 import { CustomerCreateDialogComponent } from '../customer-create-dialog/customer-create-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'crm-customer-list-page',
@@ -14,19 +15,24 @@ import { Router } from '@angular/router';
 
 export class CustomerListPageComponent implements OnInit {
 
-  customers$!: Observable<Customer[]>;
+  filteredCustomers$: Observable<Customer[]>;
   displayColumns = ['status-icon', 'name', 'phone', 'email', 'status', 'lastContactDate', 'actions'];
+  filterInput = new FormControl();
 
   constructor(private customerService: CustomerService,
               private router: Router,
               public dialog: MatDialog
               ) {
+              this.filteredCustomers$ = this.filterInput.valueChanges.pipe(
+                startWith(''),
+                debounceTime(700),
+                switchMap((filterTerm: string) => {
+                  return this.customerService.search(filterTerm);
+                }),
+              );
   }
 
-  ngOnInit(): void {
-    this.customers$ = this.customerService.search('');
-
-  }
+  ngOnInit(): void {}
 
   openDetail(item: Customer): void {
     if (item) {
@@ -45,3 +51,4 @@ export class CustomerListPageComponent implements OnInit {
     });
   }
 }
+

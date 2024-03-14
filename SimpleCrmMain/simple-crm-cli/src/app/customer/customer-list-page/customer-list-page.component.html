@@ -1,16 +1,23 @@
 <div class="table-content">
     <mat-card>
-        <mat-card-header>
             <mat-card-title fxLayout>
                 <h1>Customers List</h1>
-                <span fxFlex></span>
-                <button fxFlex="nogrow" class="addButton" mat-mini-fab (click)="addCustomer()">
-                    <mat-icon aria-label="Add Customer">add</mat-icon>
-                </button>
+                <div fxLayoutAlign = "start baseline">
+                    <mat-form-field>
+                        <mat-label>Filter</mat-label>
+                        <input matInput [formControl] = "filterInput">
+                        <button mat-button matSuffix mat-icon-button *ngIf = "filterInput.value" aria-label = "Clear" (click) = "filterInput.setValue('')">
+                            <mat-icon>Colose</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <mat-icon *ngIf = "!filterInput.value" matSuffix>filter_list</mat-icon>
+                    <span fxFlex></span>
+                    <button fxFlex="nogrow" class="addButton" mat-mini-fab (click)="addCustomer()">
+                        <mat-icon aria-label="Add Customer">add</mat-icon>
+                    </button>   
+                </div>
             </mat-card-title>
-        </mat-card-header>
-
-        <table mat-table [dataSource] = "customers$">
+        <table mat-table [dataSource] = "filteredCustomers$">
 
             <ng-container matColumnDef = "status-icon">
                 <th mat-header-cell *matHeaderCellDef> </th>
@@ -59,8 +66,12 @@
                 <tr mat-row *matRowDef = "let row; columns: displayColumns;"></tr>
         </table>
     </mat-card>
-
-    <!-- <pre>
-        {{customers$ | async | json}}
-    </pre> -->
+    <mat-card>
+        <div *ngFor = "let customer of filteredCustomers$ | async">
+            {{customer.firstName}}
+        </div>
+        <pre>
+        {{filteredCustomers$ | async | json}}
+        </pre>
+    </mat-card>
 </div>
