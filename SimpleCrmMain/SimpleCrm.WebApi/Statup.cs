@@ -12,6 +12,7 @@ using NSwag;
 using NSwag.AspNetCore;
 using Microsoft.Net.Http.Headers;
 using System.Text.Json.Serialization;
+using SimpleCrm.WebApi.Filters;
 
 namespace SimpleCrm.WebApi
 {
@@ -131,7 +132,11 @@ namespace SimpleCrm.WebApi
             identityBuilder.AddDefaultTokenProviders();
 
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(o =>
+            {
+                o.Filters.Add(typeof(GlobalExceptionFilter));
+            });
+
             services.AddResponseCaching();
 
             services.AddControllersWithViews().AddJsonOptions(options =>
@@ -160,7 +165,7 @@ namespace SimpleCrm.WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseDatabaseErrorPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {

@@ -10,7 +10,8 @@ namespace SimpleCrm.WebApi.Controllers
         [Route("home")]
         public IActionResult Index()
         {
-            return View();
+            throw new ApiException("An exceptional test. :)");
+            //return View();
         }
 
         [ResponseCache(Duration = 30, Location = ResponseCacheLocation.Any)]
