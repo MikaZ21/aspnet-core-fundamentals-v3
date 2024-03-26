@@ -1,13 +1,15 @@
 <div class="table-content">
     <mat-card>
             <mat-card-title fxLayout>
-                <h1>Customers List</h1>
+                <span>Customers List</span>
+            </mat-card-title>
+
                 <div fxLayoutAlign = "start baseline">
                     <mat-form-field>
                         <mat-label>Filter</mat-label>
                         <input matInput [formControl] = "filterInput">
                         <button mat-button matSuffix mat-icon-button *ngIf = "filterInput.value" aria-label = "Clear" (click) = "filterInput.setValue('')">
-                            <mat-icon>Colose</mat-icon>
+                            <mat-icon>Close</mat-icon>
                         </button>
                     </mat-form-field>
                     <mat-icon *ngIf = "!filterInput.value" matSuffix>filter_list</mat-icon>
@@ -16,7 +18,6 @@
                         <mat-icon aria-label="Add Customer">add</mat-icon>
                     </button>   
                 </div>
-            </mat-card-title>
         <table mat-table [dataSource] = "filteredCustomers$">
 
             <ng-container matColumnDef = "status-icon">
