@@ -61,7 +61,9 @@ export class CustomerMockService extends CustomerService {
   // When searching records, return all items in the customer array that match
   //  the search term. You decide which properties of the customer to match.
   override search(term: string): Observable<Customer[]> {
-    const searcResult = this.customers.filter(item => item.lastName.toLocaleLowerCase().startsWith(term.toLocaleLowerCase()));
+    const searcResult = this.customers.filter(item => item.lastName.toLocaleLowerCase().startsWith(term.toLocaleLowerCase())
+                    || item.firstName.toLocaleLowerCase().startsWith(term.toLocaleLowerCase())
+                    || item.emailAddress.toLocaleLowerCase().startsWith(term.toLocaleLowerCase()));
     return of(searcResult);
   }
 
