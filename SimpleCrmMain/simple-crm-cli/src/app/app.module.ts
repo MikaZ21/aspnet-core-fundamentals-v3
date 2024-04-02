@@ -14,6 +14,7 @@ import { CustomerModule } from './customer/customer.module';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import { AppIconsService } from './app-icons.service';
+import { AccountModule } from './account/account.module';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { AppIconsService } from './app-icons.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AccountModule,
     BrowserAnimationsModule,
     CustomerModule,
     LayoutModule,
