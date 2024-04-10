@@ -1,11 +1,21 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { map } from 'rxjs';
+import { UserSummaryViewModel } from './account.model';
+import { AccountService } from './account.service';
 
-export const authenticatedGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot
-                                  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree => {
+export const AuthenticatedGuard = () => {
   const router = inject(Router);
-  // const accountService = inject(AccountService);
-  console.log("User is accessing a guarded route.", route, state);
-  return router.createUrlTree(['not-authorized']);
+  const accountService = inject(AccountService);
+
+  return accountService.user.pipe(
+    map((user: UserSummaryViewModel) => {
+      if (user.name === 'Anonymous') {
+        return router.createUrlTree(['./login']);
+      }
+      return true;
+    })
+  )
+  // console.log("User is accessing a guarded route.", route, state);
+  // return router.createUrlTree(['not-authorized']);
 };

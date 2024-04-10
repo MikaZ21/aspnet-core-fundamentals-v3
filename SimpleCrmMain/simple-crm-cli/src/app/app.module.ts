@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -11,8 +11,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { CustomerModule } from './customer/customer.module';
-import {MatCardModule} from '@angular/material/card';
-import {MatTableModule} from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
 import { AppIconsService } from './app-icons.service';
 import { AccountModule } from './account/account.module';
 
@@ -36,7 +36,7 @@ import { AccountModule } from './account/account.module';
     MatCardModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [AppIconsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

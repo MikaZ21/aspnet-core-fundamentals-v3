@@ -38,7 +38,7 @@ namespace SimpleCrm.WebApi.ApiControllers
             {
                 client_id = _microsoftAuthSettings.ClientId,
                 scope = "https://graph.microsoft.com/user.read",
-                state = ""
+                state = "" //arbitrary state to return again for this user
             });
         }
 
