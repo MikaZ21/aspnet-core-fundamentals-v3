@@ -110,38 +110,38 @@ namespace SimpleCrm.WebApi.Auth
 		}
 	}
 
-	public interface IOAuthUserProfile
-	{
-		bool IsSuccessful { get; set; }
-        OAuthError Error { get; set; }
-        string Id { get; set; }
-        string Mail { get; set; }
-        string JobTitle { get; set; }
-        string DisplayName { get; set; }
-        string MobilePhone { get; set; }
-    }
+	//public interface IOAuthUserProfile
+	//{
+	//	bool IsSuccessful { get; set; }
+	//       OAuthError Error { get; set; }
+	//       string Id { get; set; }
+	//       string Mail { get; set; }
+	//       string JobTitle { get; set; }
+	//       string DisplayName { get; set; }
+	//       string MobilePhone { get; set; }
+	//   }
 
 	public class MicrosoftUserProfile : IOAuthUserProfile
-    {
-        public bool IsSuccessful { get; set; }
-        public OAuthError Error { get; set; }
-        public string Context { get; set; }
-        public string Id { get; set; }
-        public string[] BusinessPhones { get; set; }
-        public string DisplayName { get; set; }
-        public string GivenName { get; set; }
-        public string JobTitle { get; set; }
-        public string Mail { get; set; }
-        public string MobilePhone { get; set; }
-        public string OfficeLocation { get; set; }
-        public string PreferredLanguage { get; set; }
-        public string Surname { get; set; }
-        public string UserPrincipalName { get; set; }
-    }
-
-	public class OAuthError
 	{
-		public string Code { get; set; }
-        public string Message { get; set; }
-    }
+		public bool IsSuccessful { get; set; }
+		public OAuthError Error { get; set; }
+		public string Context { get; set; }
+		public string Id { get; set; }
+		public string[] BusinessPhones { get; set; }
+		public string DisplayName { get; set; }
+		public string GivenName { get; set; }
+		public string JobTitle { get; set; }
+		public string Mail { get; set; }
+		public string MobilePhone { get; set; }
+		public string OfficeLocation { get; set; }
+		public string PreferredLanguage { get; set; }
+		public string Surname { get; set; }
+		public string UserPrincipalName { get; set; }
+	}
+
+	//public class OAuthError
+	//{
+	//	public string Code { get; set; }
+	//       public string Message { get; set; }
+	//   }
 }

@@ -15,13 +15,15 @@ namespace SimpleCrm.WebApi.ApiControllers
         private readonly IConfiguration _configuration;
         private readonly ILogger<AuthController> _logger;
         private readonly MicrosoftAuthSettings _microsoftAuthSettings;
+        private readonly GoogleAuthSettings _googleAuthSettings;
 
         public AuthController(
             UserManager<CrmUser> userManager,
             IJwtFactory jwtFactory,
             IConfiguration configuration,
             ILogger<AuthController> logger,
-            IOptions<MicrosoftAuthSettings> microsoftAuthSettings
+            IOptions<MicrosoftAuthSettings> microsoftAuthSettings,
+            IOptions<GoogleAuthSettings> googleAuthSettings
             )
         {
             _userManager = userManager;
@@ -29,6 +31,7 @@ namespace SimpleCrm.WebApi.ApiControllers
             _configuration = configuration;
             _logger = logger;
             _microsoftAuthSettings = microsoftAuthSettings.Value;
+            _googleAuthSettings = googleAuthSettings.Value;
         }
 
         [HttpGet("external/microsoft")]
@@ -100,6 +103,80 @@ namespace SimpleCrm.WebApi.ApiControllers
             var userModel = await GetUserData(user);
             return Ok(userModel);
         }
+
+
+        [HttpGet("external/google")]
+        public IActionResult GetGoogle()
+        {
+            return Ok(new
+            {
+                client_id = _googleAuthSettings.ClientId,
+                scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid",
+                state = "" //arbitrary state to return again for this user
+            });
+        }
+
+        [HttpPost("external/google")]
+        public async Task<IActionResult> PostGoogle([FromBody] GoogleAuthViewModel model)
+        {
+            var verifier = new GoogleAuthVerifier<AuthController>(_googleAuthSettings, _configuration["HttpHost"] + (model.BaseHref ?? "/"), _logger);
+            var profile = await verifier.AcquireUser(model.AccessToken);
+
+            //TODO: validate the 'profile' object is successful, and email address is included
+            if (!profile.IsSuccessful)
+            {
+                _logger.LogWarning("ExternalLoginCallback() unknown error at external login provider, {profile.Error.Message}", profile.Error.Message);
+                return StatusCode(StatusCodes.Status400BadRequest, profile.Error.Message);
+            }
+
+            //TODO: create a UserLoginInfo (part of asp.net identity)
+            var info = new UserLoginInfo("Google", profile.Id, "Google");
+            if (info == null || info.ProviderKey == null || info.LoginProvider == null)
+            {
+                _logger.LogWarning("ExternalLoginCallback() unknown error at external login provider");
+                return StatusCode(StatusCodes.Status400BadRequest,
+                    "Unknown error at external login provider");
+            }
+
+            if (string.IsNullOrWhiteSpace(profile.Mail))
+            {
+                return StatusCode(StatusCodes.Status422UnprocessableEntity,
+                    "Email address not available from Login provider, cannot proceed.");
+            }
+
+            // ready to create the local user account (if necessary) and jwt
+            var user = await _userManager.FindByEmailAsync(profile.Mail);
+            if (user == null)
+            {
+                // TODO: create a new user, 'CrmUser' with 'UserManager'
+                var appUser = new CrmUser
+                {
+                    DisplayName = profile.DisplayName,
+                    Email = profile.Mail,
+                    UserName = profile.Mail,
+                    PhoneNumber = profile.MobilePhone
+                };
+
+                var password = Convert.ToBase64String(Guid.NewGuid().ToByteArray()).Substring(0, 8) + "#1aA";
+                var identityResult = await _userManager.CreateAsync(appUser, password);
+                if (!identityResult.Succeeded)
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, "Could not create user.");
+                }
+
+                user = await _userManager.FindByEmailAsync(profile.Mail);
+                if (user == null)
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, "Failed to create local user account.");
+                }
+            }
+
+            var userModel = await GetUserData(user);
+            return Ok(userModel);
+        }
+
+
+
 
         [HttpPost("login")]
         public async Task<IActionResult> Post([FromBody] CredentialsViewModel credentials)

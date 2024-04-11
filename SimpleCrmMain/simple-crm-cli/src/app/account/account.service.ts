@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CredentialsViewModel, MicrosoftOptions, UserSummaryViewModel, anonymousUser } from './account.model';
+import { CredentialsViewModel, GoogleOptions, MicrosoftOptions, UserSummaryViewModel, anonymousUser } from './account.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -52,6 +52,13 @@ export class AccountService {
       this.baseUrl + 'external/microsoft'
     );
   }
+
+  public loginGoogleOptions(): Observable<GoogleOptions> {
+    return this.http.get<GoogleOptions>(
+      this.baseUrl + 'external/google'
+    );
+  }
+
 
   // Name and password login API call.
   // If a successful login is completed, you may want to call loginComplete

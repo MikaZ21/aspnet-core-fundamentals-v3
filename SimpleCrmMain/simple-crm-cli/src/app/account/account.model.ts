@@ -12,6 +12,13 @@ export interface MicrosoftOptions {
     state: string;
 }
 
+export interface GoogleOptions {
+    client_id: string;
+    scope: string;
+    state: string;
+}
+
+
 export interface CredentialsViewModel {
     emailAddress: string;
     password: string;

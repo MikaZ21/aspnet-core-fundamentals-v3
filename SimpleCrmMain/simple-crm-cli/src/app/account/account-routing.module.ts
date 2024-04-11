@@ -17,11 +17,11 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'singin-microsoft',
+    path: 'signin-microsoft',
     component: SigninMicrosoftComponent,
   },
   {
-    path: 'singin-google',
+    path: 'signin-google',
     component: SigninGoogleComponent,
   },
   {

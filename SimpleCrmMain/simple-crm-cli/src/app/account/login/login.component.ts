@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
         redirect_uri:
           window.location.origin + 
           this.platformLocation.getBaseHrefFromDOM() +
-          'account/signin-microsoft',
+          'signin-microsoft',
       };
       console.log(options.redirect_uri);
       let params = new HttpParams();
@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
     this.snackBar.open('Signing in with Google...', '', { duration: 2000 });
     const baseUrl = 
       'https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?';
-    this.accountService.loginMicrofoftOptions().subscribe((opts) => {
+    this.accountService.loginGoogleOptions().subscribe((opts) => {
       const options: { [key: string]: string } = {
         ...opts,
         response_type: 'code',
@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
         redirect_uri:
           window.location.origin + 
           this.platformLocation.getBaseHrefFromDOM() + 
-          'account/signin-google',
+          'signin-google',
       };
       console.log(options.redirect_uri);
       let params = new HttpParams();
