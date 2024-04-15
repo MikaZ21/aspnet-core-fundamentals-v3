@@ -47,7 +47,7 @@ import { PipelineComponent } from './pipeline/pipeline.component';
   providers: [
     {
       provide: CustomerService,
-      useClass: CustomerMockService
+      // useClass: CustomerMockService
     }
   ]
 })

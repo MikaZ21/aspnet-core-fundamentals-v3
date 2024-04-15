@@ -15,6 +15,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { AppIconsService } from './app-icons.service';
 import { AccountModule } from './account/account.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './account/jwt-interceptor';
 
 
 @NgModule({
@@ -36,9 +38,17 @@ import { AccountModule } from './account/account.module';
     MatCardModule,
     MatTableModule
   ],
-  providers: [AppIconsService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+    AppIconsService
+  ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { 
   constructor(iconService: AppIconsService) {}
 }

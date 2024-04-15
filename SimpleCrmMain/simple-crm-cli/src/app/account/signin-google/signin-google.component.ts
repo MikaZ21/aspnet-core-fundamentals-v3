@@ -4,7 +4,7 @@ import { AccountService } from '../account.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'crm-signin-microsoft',
+  selector: 'crm-signin-google',
   templateUrl: './signin-google.component.html',
   styleUrls: ['./signin-google.component.scss']
 })

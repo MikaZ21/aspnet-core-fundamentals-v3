@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../customer.model';
 import { CustomerService } from '../customer.service';
-import { Observable, debounceTime, startWith, switchMap } from 'rxjs';
+import { Observable, debounceTime, shareReplay, startWith, switchMap } from 'rxjs';
 import { CustomerCreateDialogComponent } from '../customer-create-dialog/customer-create-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -29,6 +29,7 @@ export class CustomerListPageComponent implements OnInit {
                 switchMap((filterTerm: string) => {
                   return this.customerService.search(filterTerm);
                 }),
+                shareReplay(),
               );
   }
 
