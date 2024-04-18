@@ -1,6 +1,6 @@
 <div style="height:100vh; display:flex; flex-direction:column;">
   <mat-toolbar color="primary">
-    <button mat-icon-button matRipple (click)="sidenav.toggle()">
+    <button mat-icon-button matRipple (click)="sideNavToggle()">
         <mat-icon>menu</mat-icon>
     </button>
     <a mat-list-item href="/home"><span class="title">{{title}}</span></a>
@@ -28,7 +28,8 @@
     </mat-sidenav>
     
     <router-outlet></router-outlet>
-    <button (click)="sidenav.toggle()">Toggle</button>
+    <!-- <button (click)="sidenav.toggle()">Toggle</button> -->
+    <button (click)="sideNavToggle()">Toggle</button>
   </mat-sidenav-container>
 
   <div class="footer">

@@ -17,6 +17,9 @@ import { AppIconsService } from './app-icons.service';
 import { AccountModule } from './account/account.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './account/jwt-interceptor';
+import { StoreModule } from '@ngrx/store';
+import { layoutFeatureKey, layoutReducer } from './store/layout.store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -36,7 +39,13 @@ import { JwtInterceptor } from './account/jwt-interceptor';
     MatIconModule,
     MatListModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    // Register the Store in root module and can be in each feature module that has state.
+    StoreModule.forRoot({}),  // for no global state, use an empty object, {}.
+    StoreModule.forFeature(layoutFeatureKey, layoutReducer),
+    StoreDevtoolsModule.instrument({
+      name: 'Nexul Academy - Simple CRM'
+    })
   ],
   providers: [
     {
