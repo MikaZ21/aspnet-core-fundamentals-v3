@@ -7,7 +7,8 @@
   </mat-toolbar>
 
   <mat-sidenav-container style="flex:1 100%">
-    <mat-sidenav #sidenav [opened]="true" [mode]="'side'">
+    <!-- [opened] property could be switced over to use the Observable value. 'showSideNav$' -->
+    <mat-sidenav [opened]="showSideNav$ | async" [mode]="'side'"> 
       <mat-nav-list>
         <a mat-list-item matRipple [style.position]="'relative'"
           routerLinkActive="selected" [routerLink]="['./customers']" class="customers">

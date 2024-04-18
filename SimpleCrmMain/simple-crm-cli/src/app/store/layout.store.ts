@@ -2,7 +2,7 @@
 // Each feature area of the application can contain it's own state model.
 // store will also require an initial value for the state.
 
-import { Action, createAction, createReducer, on } from "@ngrx/store";
+import { Action, createAction, createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
 
 export interface LayoutState {
     showSidenav: boolean;
@@ -45,6 +45,14 @@ export function layoutReducer(state: LayoutState, action: Action ) {
     return rawLayoutReducer(state, action);
 }
 
+// Define Selectors: Read State from the Store
+// A Selector is a function that knows how to read a specific slice of the state.
+// These pure functions are composed using the createSelector helper function. 
+// A special case 'createFeatureSelector' builds the top-level selector for starting at the slice of state for a specific feature.
 
+const getLayoutFeature = createFeatureSelector<LayoutState>(layoutFeatureKey);
 
-
+export const selectShowSideNav = createSelector(
+    getLayoutFeature,
+    (state: LayoutState) => state.showSidenav
+);
