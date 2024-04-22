@@ -1,44 +1,26 @@
-﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{F0F610BC-9489-453C-8434-3E8E183432E0}|Default">
+﻿<Properties StartupConfiguration="{F0F610BC-9489-453C-8434-3E8E183432E0}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/mikazukeyama/Documents/NexulAcademy/aspnet-core-fundamentals-v3/SimpleCrmMain/SimpleCrm.WebApi/ApiControllers/AuthController.cs" relfile="SimpleCrm.WebApi/ApiControllers/AuthController.cs" line="122" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="SimpleCrm.WebApi/Auth/MicrosoftAuthVerifier.cs">
-    <Files>
-      <File FileName="SimpleCrm.WebApi/ApiControllers/AuthController.cs" Line="123" Column="1" />
-      <File FileName="SimpleCrm.WebApi/Statup.cs" Line="98" Column="1" />
-      <File FileName="SimpleCrm.WebApi/Auth/GoogleAuthVerifier.cs" Line="132" Column="48" />
-      <File FileName="SimpleCrm.WebApi/Auth/MicrosoftAuthVerifier.cs" Line="113" Column="38" />
-    </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="SimpleCrm" expanded="True">
-            <Node name="SimpleCrm" expanded="True" />
-            <Node name="SimpleCrm.WebApi" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
-              <Node name="ApiControllers" expanded="True" />
-              <Node name="Areas" expanded="True" />
-              <Node name="Auth" expanded="True" />
-              <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="Auth" expanded="True" />
-              </Node>
-              <Node name="appsettings.json" expanded="True" />
-              <Node name="package.json" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SimpleCrm.WebApi/ApiControllers/AuthController.cs">
+    <Files>
+      <File FileName="SimpleCrm.WebApi/Models/Auth/UserSummaryViewModel.cs" />
+      <File FileName="SimpleCrm.WebApi/Auth/JwtIssuerOptions.cs" />
+      <File FileName="SimpleCrm.WebApi/Models/CustomerUpdateViewModel.cs" />
+      <File FileName="SimpleCrm.WebApi/Controllers/HomeController.cs" />
+      <File FileName="SimpleCrm.WebApi/ApiControllers/CustomerController.cs" />
+      <File FileName="SimpleCrm.WebApi/ApiControllers/AuthController.cs" Line="122" Column="1" />
+      <File FileName="SimpleCrm.WebApi/Program.cs" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
   <DisabledProjects>
     <String>../SimpleCrm.WebApi/SimpleCrm.WebApi.csproj</String>
   </DisabledProjects>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.SimpleCrm.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.ItemProperties.SimpleCrm.WebApi PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

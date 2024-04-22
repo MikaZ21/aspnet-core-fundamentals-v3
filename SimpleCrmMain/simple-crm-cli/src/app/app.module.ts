@@ -20,6 +20,7 @@ import { JwtInterceptor } from './account/jwt-interceptor';
 import { StoreModule } from '@ngrx/store';
 import { layoutFeatureKey, layoutReducer } from './store/layout.store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     StoreModule.forFeature(layoutFeatureKey, layoutReducer),
     StoreDevtoolsModule.instrument({
       name: 'Nexul Academy - Simple CRM'
-    })
+    }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     {

@@ -20,6 +20,8 @@ import { CustomerDetailComponent } from './customer-detail/customer-detail.compo
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { StatusIconPipe } from './status-icon.pipe';
 import { PipelineComponent } from './pipeline/pipeline.component';
+import { EffectsModule } from '@ngrx/effects';
+import { CustomerStoreEffects } from './store/customer.store.effects';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { PipelineComponent } from './pipeline/pipeline.component';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    EffectsModule.forFeature([CustomerStoreEffects])
   ],
   providers: [
     {
