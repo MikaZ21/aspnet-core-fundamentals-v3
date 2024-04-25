@@ -22,6 +22,9 @@ import { StatusIconPipe } from './status-icon.pipe';
 import { PipelineComponent } from './pipeline/pipeline.component';
 import { EffectsModule } from '@ngrx/effects';
 import { CustomerStoreEffects } from './store/customer.store.effects';
+import { StoreModule } from '@ngrx/store';
+import { customerFeatureKey } from './store/customer.store.selectors';
+import { customerReducer } from './store/customer.store';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,8 @@ import { CustomerStoreEffects } from './store/customer.store.effects';
     MatFormFieldModule,
     MatSelectModule,
     MatSnackBarModule,
-    EffectsModule.forFeature([CustomerStoreEffects])
+    EffectsModule.forFeature([CustomerStoreEffects]),
+    StoreModule.forFeature(customerFeatureKey, customerReducer),
   ],
   providers: [
     {

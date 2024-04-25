@@ -9,6 +9,7 @@ export class CustomerService {
   constructor(private http: HttpClient) { }
 
   search(term: string): Observable<Customer[]> {
+  
     return this.http.get<Customer[]>('/api/customers/?term=' + term);
   }
 

@@ -11,6 +11,8 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   title = 'Simple CRM';
 
+  showSideNav$: Observable<boolean>;
+
   // Components using Store
   // Once store has been defined and imported into the module, the components within that module can now inject and 
   // use the store. This is very similar to other injected dependencies, except that a state type is specified in the angle brackets.
@@ -27,5 +29,4 @@ export class AppComponent {
   // The Store injected into a component is an Observable of the intire state tree for the application. 
   // You can use the observable pipe funcion with the NgRx select operator combined with your selector function name to subscribe to the ongoing latest value of that slice of the state.
 
-  showSideNav$: Observable<boolean>;
 }
