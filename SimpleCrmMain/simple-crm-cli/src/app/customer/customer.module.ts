@@ -24,8 +24,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { CustomerStoreEffects } from './store/customer.store.effects';
 import { StoreModule } from '@ngrx/store';
 import { customerFeatureKey } from './store/customer.store.selectors';
-import { customerReducer } from './store/customer.store';
-
+import { customerReducer } from './store/customer.store.reducer';
 @NgModule({
   declarations: [
     CustomerListPageComponent,

@@ -3,7 +3,7 @@ import { CustomerService } from "../customer.service";
 import { Injectable } from "@angular/core";
 import { map, switchMap } from "rxjs";
 import { Customer } from "../customer.model";
-import { searchCustomersAction, searchCustomersCompleteAction, updateCustomerAction, updateCustomerCompleteAction } from "./customer.store";
+import { searchCustomersAction, searchCustomersCompleteAction, updateCustomerAction, updateCustomerCompleteAction } from "./customer.store.actions";
 
 // ngrx effects that trigger all the side effects for specific actions.
 @Injectable()

@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { CustomerState } from '../store/customer.store.model';
 import { Store, select } from '@ngrx/store';
-import { addCustomerAction, searchCustomersAction } from '../store/customer.store';
 import { selectCustomers, selectCriteria } from '../store/customer.store.selectors';
+import { searchCustomersAction, addCustomerAction } from '../store/customer.store.actions';
 
 @Component({
   selector: 'crm-customer-list-page',
