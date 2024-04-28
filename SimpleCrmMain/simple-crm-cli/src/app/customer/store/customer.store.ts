@@ -1,15 +1,15 @@
 // Actions (with createAction), and the reducer function (with createReducer).
 // Some may break these two into separate files, when larger than 50 lines.
 
-import { Action, createAction, createReducer, on, props } from '@ngrx/store';
-import {
-  CustomerState,
-  customerSearchCriteria,
-  customerStateAdapter,
-  initialCustomerState,
-} from './customer.store.model';
-import { Customer } from '../customer.model';
-import { Update } from '@ngrx/entity';
+// import { Action, createAction, createReducer, on, props } from '@ngrx/store';
+// import {
+//   CustomerState,
+//   customerSearchCriteria,
+//   customerStateAdapter,
+//   initialCustomerState,
+// } from './customer.store.model';
+// import { Customer } from '../customer.model';
+// import { Update } from '@ngrx/entity';
 
 // // * Actions
 // export const searchCustomersAction = createAction(
