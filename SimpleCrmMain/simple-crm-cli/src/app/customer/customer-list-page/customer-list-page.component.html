@@ -18,7 +18,10 @@
                         <mat-icon aria-label="Add Customer">add</mat-icon>
                     </button>   
                 </div>
-        <table mat-table [dataSource] = "allCustomers$">
+
+                <crm-customer-list-table [customers] = "allCustomers$ | async" (openCustomer)="openDetail($event)"></crm-customer-list-table>
+
+        <!-- <table mat-table [dataSource] = "allCustomers$">
 
             <ng-container matColumnDef = "status-icon">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
@@ -65,7 +68,7 @@
                 
                 <tr mat-header-row *matHeaderRowDef = "displayColumns"></tr>
                 <tr mat-row *matRowDef = "let row; columns: displayColumns;"></tr>
-        </table>
+        </table> -->
     </mat-card>
 
     <div class="list-container">
@@ -78,4 +81,6 @@
         </mat-card-title-group>
         </mat-card>
     </div>
+
+    <div><input type="text" (keyup)="changeText()" /></div>
 </div>

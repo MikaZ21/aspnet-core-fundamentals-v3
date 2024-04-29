@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Customer } from '../customer.model';
 import { CustomerService } from '../customer.service';
 import { Observable, debounceTime, shareReplay, startWith, switchMap, tap } from 'rxjs';
@@ -15,12 +15,13 @@ import { searchCustomersAction, addCustomerAction } from '../store/customer.stor
   selector: 'crm-customer-list-page',
   templateUrl: './customer-list-page.component.html',
   styleUrls: ['./customer-list-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class CustomerListPageComponent implements OnInit {
 
   filteredCustomers$: Observable<Customer[]>;
-  displayColumns = ['status-icon', 'name', 'phone', 'email', 'status', 'lastContactDate', 'actions'];
+  // displayColumns = ['status-icon', 'name', 'phone', 'email', 'status', 'lastContactDate', 'actions'];
   filterInput = new FormControl();
   
   allCustomers$: Observable<Customer[]>;
@@ -44,6 +45,13 @@ export class CustomerListPageComponent implements OnInit {
                 shareReplay(),
               );
   }
+
+
+  changeText(): void {
+    console.log("change Text!");
+  }
+
+
 
   ngOnInit(): void {
     this.store.select(selectCriteria).subscribe(({ term }) => {

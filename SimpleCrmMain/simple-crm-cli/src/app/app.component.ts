@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { LayoutState, selectShowSideNav, toggleSidenav } from './store/layout.store';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'crm-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   title = 'Simple CRM';
@@ -29,4 +30,9 @@ export class AppComponent {
   // The Store injected into a component is an Observable of the intire state tree for the application. 
   // You can use the observable pipe funcion with the NgRx select operator combined with your selector function name to subscribe to the ongoing latest value of that slice of the state.
 
+
+  checkRender(): boolean {
+    console.log('checkRender!'); // rendered 24 times!
+    return true;
+  }
 }

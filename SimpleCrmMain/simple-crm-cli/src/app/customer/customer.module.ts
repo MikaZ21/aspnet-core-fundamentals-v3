@@ -25,13 +25,15 @@ import { CustomerStoreEffects } from './store/customer.store.effects';
 import { StoreModule } from '@ngrx/store';
 import { customerFeatureKey } from './store/customer.store.selectors';
 import { customerReducer } from './store/customer.store.reducer';
+import { CustomerListTableComponent } from './customer-list-table/customer-list-table.component';
 @NgModule({
   declarations: [
     CustomerListPageComponent,
     CustomerCreateDialogComponent,
     CustomerDetailComponent,
     StatusIconPipe,
-    PipelineComponent
+    PipelineComponent,
+    CustomerListTableComponent
   ],
   imports: [
     CommonModule,
