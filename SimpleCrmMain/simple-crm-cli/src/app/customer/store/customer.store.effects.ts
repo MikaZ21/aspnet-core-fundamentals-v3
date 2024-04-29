@@ -23,7 +23,7 @@ export class CustomerStoreEffects {
                 )
             )
         )
-    ))
+    ));
 
     updateCustomers$ = createEffect(() =>
         this.actions$.pipe(
@@ -35,5 +35,18 @@ export class CustomerStoreEffects {
                         result: {id: data.customerId, changes: { ...data }},
                     }))
             ))
-    ))
+    ));
+
+    // addCustomers$ = createEffect(() =>
+    //     this.actions$.pipe(
+    //         ofType(addCustomerAction),
+    //         switchMap(({ item }) =>
+    //         this.custSvc.insert(item).pipe(
+    //             map((data:Customer) =>
+    //                 addCustomerCompleteAction({
+    //                     result: data,
+    //                 }))
+    //         ))
+    // ));
+
 }

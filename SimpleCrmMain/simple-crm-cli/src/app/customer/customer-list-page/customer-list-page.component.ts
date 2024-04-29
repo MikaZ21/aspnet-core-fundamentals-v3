@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
 import { CustomerState } from '../store/customer.store.model';
 import { Store, select } from '@ngrx/store';
 import { selectCustomers, selectCriteria } from '../store/customer.store.selectors';
-import { searchCustomersAction, addCustomerAction } from '../store/customer.store.actions';
+import { searchCustomersAction } from '../store/customer.store.actions';
 
 @Component({
   selector: 'crm-customer-list-page',
@@ -78,7 +78,13 @@ export class CustomerListPageComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.store.dispatch(addCustomerAction(result));
+        // this.store.dispatch(addCustomerAction(result));
+        this.customerService.insert(result).subscribe({
+          next: cust => { 
+            this.store.dispatch(searchCustomersAction({ 
+              criteria: { term: this.filterInput.value || '' }} ));
+          }
+        });
       }
     });
   }

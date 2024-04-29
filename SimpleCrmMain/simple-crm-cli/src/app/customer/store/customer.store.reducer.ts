@@ -1,5 +1,5 @@
 import { createReducer, on, Action } from "@ngrx/store";
-import { searchCustomersAction, searchCustomersCompleteAction, addCustomerAction, addCustomerCompleteAction, updateCustomerAction, updateCustomerCompleteAction } from "./customer.store.actions";
+import { searchCustomersAction, searchCustomersCompleteAction, updateCustomerAction, updateCustomerCompleteAction } from "./customer.store.actions";
 import { initialCustomerState, customerStateAdapter, CustomerState } from "./customer.store.model";
 
 // * Reducers
@@ -16,16 +16,16 @@ const rawCustomerReducer = createReducer(
         searchStatus: 'complete',
       });
     }),
-    on(addCustomerAction, (state) => ({
-      ...state,
-      addCustStatus: 'adding',
-    })),
-    on(addCustomerCompleteAction, (state, action) => {
-      return customerStateAdapter.addOne(action.result, {
-        ...state,
-        addCustStatus: 'complete',
-      });
-    }),
+    // on(addCustomerAction, (state,action) => ({
+    //   ...state,
+    //   addCustStatus: 'adding',
+    // })),
+    // on(addCustomerCompleteAction, (state, action) => {
+    //   return customerStateAdapter.addOne(action.result, {
+    //     ...state,
+    //     addCustStatus: 'complete',
+    //   });
+    // }),
     on(updateCustomerAction, (state) => ({
       ...state,
       updateCustomerStatus: 'updating',
