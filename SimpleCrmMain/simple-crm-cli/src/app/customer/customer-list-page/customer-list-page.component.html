@@ -19,7 +19,8 @@
                     </button>   
                 </div>
 
-                <crm-customer-list-table [customers] = "allCustomers$ | async" (openCustomer)="openDetail($event)"></crm-customer-list-table>
+                <crm-customer-list-table [customers] = "allCustomers$ | async" 
+                    (openCustomer)="openDetail($event)"></crm-customer-list-table>
 
         <!-- <table mat-table [dataSource] = "allCustomers$">
 
@@ -72,7 +73,8 @@
     </mat-card>
 
     <div class="list-container">
-        <mat-card class="card-list" *ngFor="let cust of filteredCustomers$ | async">
+        <mat-card class="card-list" 
+            *ngFor="let cust of filteredCustomers$ | async ; index as i; trackByUserId">
         <mat-card-title-group>
             <mat-card-title
             >{{ cust.firstName | titlecase }}

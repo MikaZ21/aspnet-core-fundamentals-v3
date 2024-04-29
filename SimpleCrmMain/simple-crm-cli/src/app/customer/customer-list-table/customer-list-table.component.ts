@@ -8,7 +8,6 @@ import { Customer } from '../customer.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomerListTableComponent {
-  displayColumns = ['status-icon', 'name', 'phone', 'email', 'status', 'lastContactDate', 'actions'];
 
   // Configuring the child component using the @Input decorator in a child component class.
   // e.g. @Input() item = ''; <- decorate the property with @Input()
@@ -17,7 +16,20 @@ export class CustomerListTableComponent {
   @Input({required: true}) customers!: Customer[] | null
   @Output() openCustomer = new EventEmitter<Customer>();
 
+  displayColumns = [
+    'status-icon', 
+    'name', 
+    'phone', 
+    'email', 
+    'status', 
+    'lastContactDate', 
+    'actions'];
+
   openDetail(row: Customer) {
     this.openCustomer.emit(row);
+  }
+
+  trackByUserId(index: number, item: Customer) {
+    return item.customerId;
   }
 }

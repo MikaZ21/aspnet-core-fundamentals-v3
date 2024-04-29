@@ -1,4 +1,4 @@
-<table mat-table *ngIf="customers"  [dataSource] = "customers" >
+<table mat-table *ngIf="customers"  [dataSource] = "customers" [trackBy]="trackByUserId">
 
     <ng-container matColumnDef = "status-icon">
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
