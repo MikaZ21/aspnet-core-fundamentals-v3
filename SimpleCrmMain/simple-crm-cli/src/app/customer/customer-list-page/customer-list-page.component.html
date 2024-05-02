@@ -74,7 +74,7 @@
 
     <div class="list-container">
         <mat-card class="card-list" 
-            *ngFor="let cust of filteredCustomers$ | async ; index as i; trackByUserId">
+            *ngFor="let cust of filteredCustomers$ | async ; index as i; trackBy: trackByCustomerId">
         <mat-card-title-group>
             <mat-card-title
             >{{ cust.firstName | titlecase }}

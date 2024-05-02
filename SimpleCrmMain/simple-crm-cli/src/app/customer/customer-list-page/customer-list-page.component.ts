@@ -88,5 +88,10 @@ export class CustomerListPageComponent implements OnInit {
       }
     });
   }
+
+  trackByCustomerId(index: number, item: Customer) {
+    return item.customerId;
+  }
+
 }
 

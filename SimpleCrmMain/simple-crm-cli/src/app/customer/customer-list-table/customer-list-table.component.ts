@@ -29,7 +29,7 @@ export class CustomerListTableComponent {
     this.openCustomer.emit(row);
   }
 
-  trackByUserId(index: number, item: Customer) {
+  trackByCustomerId(index: number, item: Customer) {
     return item.customerId;
   }
 }
