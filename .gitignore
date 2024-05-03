@@ -396,3 +396,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+SimpleCrmMain/SimpleCrm.Web/obj/staticwebassets.pack.sentinel
+SimpleCrmMain/SimpleCrm.Web/obj/Debug/net6.0/SimpleCrm.Web.csproj.AssemblyReference.cache
+SimpleCrmMain/SimpleCrm.Web/obj/staticwebassets.pack.sentinel
+SimpleCrmMain/SimpleCrm/obj/staticwebassets.pack.sentinel
+SimpleCrmMain/SimpleCrm/obj/staticwebassets.pack.sentinel
+SimpleCrmMain/SimpleCrm.SqlDbServices/obj/Debug/net6.0/SimpleCrm.SqlDbServices.csproj.AssemblyReference.cache
+SimpleCrmMain/SimpleCrm.Web/obj/staticwebassets.pack.sentinel
