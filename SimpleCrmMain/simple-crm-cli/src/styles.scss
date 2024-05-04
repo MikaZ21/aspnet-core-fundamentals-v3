@@ -96,12 +96,11 @@ div.mdc-dialog__container {
   text-align: center;
 }
 
-.mat-mdc-dialog-actions.mdc-dialog__actions {
-  padding-left: 2.7em;
-  padding-bottom: 1.2em;
-}
-
 mat-dialog-content.mat-mdc-dialog-content.mdc-dialog__content {
   padding-top: 2em;
   padding-bottom: 0;
+}
+
+button.mdc-button {
+  font-size: .8em;
 }

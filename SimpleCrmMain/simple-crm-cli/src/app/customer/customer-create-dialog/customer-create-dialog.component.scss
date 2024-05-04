@@ -2,6 +2,9 @@ mat-error.mat-mdc-form-field-error {
     font-size: 0.9em;
 }
 
-button.mdc-button {
-    font-size: .8em;
-}
+.mat-mdc-dialog-actions.mdc-dialog__actions {
+    justify-content: end;
+    padding-right: 2.7em;
+    padding-bottom: 1.2em;
+  }
+  

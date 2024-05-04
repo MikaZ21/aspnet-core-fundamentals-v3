@@ -6,7 +6,7 @@
 
                 <div fxLayoutAlign = "start baseline">
                     <mat-form-field>
-                        <mat-label>Search and Filter...<mat-icon *ngIf = "!filterInput.value" matSuffix>filter_list</mat-icon>
+                        <mat-label><mat-icon *ngIf = "!filterInput.value">filter_list</mat-icon>Search and Filter...
                         </mat-label>
                         <input matInput [formControl] = "filterInput">
                         <button matSuffix mat-icon-button *ngIf = "filterInput.value" aria-label = "Clear" (click) = "filterInput.setValue('')">

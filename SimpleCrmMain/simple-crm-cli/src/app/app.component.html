@@ -30,7 +30,7 @@
     
     <router-outlet></router-outlet>
     <!-- <button (click)="sidenav.toggle()">Toggle</button> -->
-    <button (click)="sideNavToggle()">Toggle</button>
+    <!-- <button (click)="sideNavToggle()">Toggle</button> -->
   </mat-sidenav-container>
 
   <div class="footer">
@@ -43,5 +43,10 @@
   </div>
 
 
+
+  <ngx-spinner type="timer">
+    <h3 style="margin-top: 2em; padding-top: 2em;">Loading...</h3>
+  </ngx-spinner>
+  
   <div>Checking render: {{ checkRender() }}</div>
 </div>
