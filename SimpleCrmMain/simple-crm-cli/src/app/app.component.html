@@ -1,9 +1,9 @@
 <div style="height:100vh; display:flex; flex-direction:column;">
-  <mat-toolbar color="primary">
-    <button mat-icon-button matRipple (click)="sideNavToggle()">
+  <mat-toolbar color="primary" style="padding: 40px 16px; font-size: 1.5em;">
+    <button mat-icon-button matRipple (click)="sideNavToggle()" color="accent">
         <mat-icon>menu</mat-icon>
     </button>
-    <a mat-list-item href="/home"><span class="title">{{title}}</span></a>
+    <a mat-list-item href="/home"><span class="title" color="$simple-crm-cli-theme.accent">{{title}}</span></a>
   </mat-toolbar>
 
   <mat-sidenav-container style="flex:1 100%">
@@ -34,7 +34,12 @@
   </mat-sidenav-container>
 
   <div class="footer">
-    Simple CRM
+    <mat-toolbar color="primary">
+      <a mat-list-item href="/home">
+        <span class="title" color="$simple-crm-cli-theme.accent">{{title}}</span>
+      </a>
+      <p>Copyright  &copy; 2024 SimpleCRM</p>
+    </mat-toolbar>
   </div>
 
 

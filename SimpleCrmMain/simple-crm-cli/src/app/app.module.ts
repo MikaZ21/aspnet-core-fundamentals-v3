@@ -32,7 +32,7 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     AccountModule,
     BrowserAnimationsModule,
-    // CustomerModule,
+    CustomerModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,

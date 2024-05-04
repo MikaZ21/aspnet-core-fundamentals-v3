@@ -46,13 +46,6 @@ export class CustomerListPageComponent implements OnInit {
               );
   }
 
-
-  changeText(): void {
-    console.log("change Text!");
-  }
-
-
-
   ngOnInit(): void {
     this.store.select(selectCriteria).subscribe(({ term }) => {
       this.searchCriteria = term;

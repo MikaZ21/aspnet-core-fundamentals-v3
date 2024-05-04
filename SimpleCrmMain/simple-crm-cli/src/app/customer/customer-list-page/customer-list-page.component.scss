@@ -6,6 +6,18 @@ table {
     width: 100%;
 }
 
+mat-card.mdc-card {
+    padding: 1em;
+}
+
 .mat-mdc-card-header {
     flex-direction: column;
+}
+
+mat-form-field {
+    margin-left: 30px;
+}
+
+mat-mdc-form-field {
+    height: .9em;
 }

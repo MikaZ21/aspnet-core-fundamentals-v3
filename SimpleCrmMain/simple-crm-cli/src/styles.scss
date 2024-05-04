@@ -13,8 +13,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$simple-crm-cli-primary: mat.define-palette(mat.$brown-palette, 800);
-$simple-crm-cli-accent: mat.define-palette(mat.$teal-palette, A400);
+$simple-crm-cli-primary: mat.define-palette(mat.$grey-palette, 800); // #424242
+$simple-crm-cli-accent: mat.define-palette(mat.$teal-palette, A400);// #1de9b6
 
 // The warn palette is optional (defaults to red).
 $simple-crm-cli-warn: mat.define-palette(mat.$red-palette);
@@ -45,4 +45,63 @@ body { margin: 0; font-family: Verdana, "Helvetica Neue", sans-serif; }
   margin: auto;
   margin-bottom: 1em;
   min-height: calc( 101% - 2em ); //force scroll-area to align with header and footer
+}
+
+mat-toolbar a.mdc-list-item {
+  color: #1de9b6;
+}
+
+mat-toolbar .mat-toolbar-single-row {
+  padding: 40px 16px;
+}
+
+mat-card mat-card-title.mat-mdc-card-title {
+  margin: 10px;
+  padding-left: 20px;
+  font-size: 1.5em;
+}
+
+button.addButton {
+  margin-right: 30px;
+  margin-top: 8px;
+}
+
+.footer > mat-toolbar {
+  display: inline-block;
+  text-align: center;
+  padding: 5px;
+}
+
+.footer > mat-toolbar a.mdc-list-item {
+  margin: 5px;
+  padding-left: 0;
+}
+
+.footer p {
+  font-size: .5em;
+  color: #b2dfdb;
+}
+
+div.table-content {
+  box-shadow: 
+    0 0 0 2px white,
+    0.3em 0.3em 5em #b2dfdb;
+  margin-top: 5em;
+  margin-bottom: 5em;
+  padding-top: 0;
+}
+
+div.mdc-dialog__container {
+  width: 300px;
+  text-align: center;
+}
+
+.mat-mdc-dialog-actions.mdc-dialog__actions {
+  padding-left: 2.7em;
+  padding-bottom: 1.2em;
+}
+
+mat-dialog-content.mat-mdc-dialog-content.mdc-dialog__content {
+  padding-top: 2em;
+  padding-bottom: 0;
 }
