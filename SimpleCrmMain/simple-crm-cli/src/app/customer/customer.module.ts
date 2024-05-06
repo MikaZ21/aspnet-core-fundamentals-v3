@@ -37,7 +37,6 @@ import { CustomerListTableComponent } from './customer-list-table/customer-list-
   ],
   imports: [
     CommonModule,
-    HttpClientModule,
     CustomerRoutingModule,
     MatCardModule,
     MatTableModule,

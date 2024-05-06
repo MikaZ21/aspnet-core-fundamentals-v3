@@ -8,10 +8,10 @@ const routes: Routes = [
     redirectTo: 'customers',
     pathMatch: 'full'
   },  
-  // {
-  //   path: 'customers',
-  //   loadChildren: () => import('./customer/customer.module').then(mod => mod.CustomerModule)
-  // },
+  {
+    path: 'customers',
+    loadChildren: () => import('./customer/customer.module').then(mod => mod.CustomerModule)
+  },
 ];
 
 @NgModule({

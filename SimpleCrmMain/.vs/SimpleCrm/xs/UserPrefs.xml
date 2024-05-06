@@ -1,7 +1,9 @@
 ﻿<Properties StartupConfiguration="{F0F610BC-9489-453C-8434-3E8E183432E0}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.ItemProperties.SimpleCrm.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.SimpleCrm.WebApi PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="SimpleCrm.WebApi/ApiControllers/AuthController.cs">
     <Files>
       <File FileName="SimpleCrm.WebApi/Models/Auth/UserSummaryViewModel.cs" />
@@ -10,15 +12,29 @@
       <File FileName="SimpleCrm.WebApi/Controllers/HomeController.cs" />
       <File FileName="SimpleCrm.WebApi/ApiControllers/CustomerController.cs" />
       <File FileName="SimpleCrm.WebApi/ApiControllers/AuthController.cs" Line="122" Column="1" />
-      <File FileName="SimpleCrm.WebApi/Program.cs" Line="32" Column="1" />
+      <File FileName="SimpleCrm.WebApi/Program.cs" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SimpleCrm">
+            <Node name="SimpleCrm.WebApi" expanded="True">
+              <Node name="ApiControllers" expanded="True">
+                <Node name="AuthController.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True">
+                <Node name="Auth" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <DisabledProjects>
     <String>../SimpleCrm.WebApi/SimpleCrm.WebApi.csproj</String>
   </DisabledProjects>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.SimpleCrm.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

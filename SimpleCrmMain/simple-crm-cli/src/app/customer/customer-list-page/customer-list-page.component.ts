@@ -59,7 +59,7 @@ export class CustomerListPageComponent implements OnInit {
 
   openDetail(item: Customer): void {
     if (item) {
-      this.router.navigate([`./customer/${item.customerId}`]);
+      this.router.navigate([`./customers/${item.customerId}`]);
     }
   }
 
