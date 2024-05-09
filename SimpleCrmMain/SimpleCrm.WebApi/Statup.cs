@@ -224,7 +224,7 @@ namespace SimpleCrm.WebApi
                     {
                         spa.Options.SourcePath = "../simple-crm-cli";
                         spa.Options.StartupTimeout = new TimeSpan(0, 0, 300);
-                        spa.UseAngularCliServer(npmScript: "start");
+                        spa.UseAngularCliServer(npmScript: "start:prod");
                     }
                 }));
         }

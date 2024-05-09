@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "echo StartingNg && ng serve --verbose",
+    "start:prod": "echo StartingNg && ng serve --configuration=production --verbose",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -20,6 +21,7 @@
     "@angular/platform-browser": "^16.2.12",
     "@angular/platform-browser-dynamic": "^16.2.12",
     "@angular/router": "^16.2.12",
+    "@angular/service-worker": "^16.2.12",
     "@ngrx/effects": "16.2",
     "@ngrx/entity": "16.2",
     "@ngrx/store": "16.2",
