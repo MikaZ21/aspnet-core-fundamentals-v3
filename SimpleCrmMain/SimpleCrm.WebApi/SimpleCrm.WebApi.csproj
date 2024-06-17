@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-SimpleCrm.WebApi-e6d6ec30-f914-42f9-bbb0-c37087c6aa32</UserSecretsId>
     <SpaRoot>..\simple-crm-cli\</SpaRoot>
-    <SpaRoodDest>ClientApp\</SpaRoodDest>
+    <SpaRootDest>ClientApp\</SpaRootDest>
     <BuildServerSideRendering>false</BuildServerSideRendering>
   </PropertyGroup>
 
@@ -73,7 +73,7 @@
 
       <ItemGroup>
           <DistFiles Include="$(SpaRoot)dist\simplecrm-cli\**; $(SpaRoot)dist-server\simplecrm-cli\**" />
-          <DistFiles Include="$(SpaRoot)node_modeles\**" Condition="'$(BuildServerSideRendere)' == 'true'" />
+          <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRendere)' == 'true'" />
           <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(Identity)')" Exclude="@(ResolvedFileToPublish)">
           <RelativePath>$(SpaRootDest)%(DistFiles.RecursiveDir)%(DistFiles.Filename)%DistFiles.Extension)</RelativePath>
           <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
