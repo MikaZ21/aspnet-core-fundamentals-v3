@@ -7,8 +7,13 @@
     <SpaRoot>..\simple-crm-cli\</SpaRoot>
     <SpaRootDest>ClientApp\</SpaRootDest>
     <BuildServerSideRendering>false</BuildServerSideRendering>
+    <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Properties\PublishProfiles\" />
+  </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
   </ItemGroup>
@@ -36,6 +41,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.16.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,13 +59,14 @@
     <Folder Include="Auth\" />
     <Folder Include="ApiControllers\" />
     <Folder Include="Models\Auth\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="wwwroot\images\" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition="'$(Configuration)' == 'Debug' And Exists('$(SpaRoot)node_modules')">
-      <Exec Command="node --version" ContinueOnError="true">
+      <Exec Command="node -version" ContinueOnError="true">
           <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
       </Exec>
       <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project."></Error>
@@ -68,14 +75,14 @@
   </Target>
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
       <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
-      <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build-all-prod" />
-      <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build-all-prod:ssr" Condition="'$(BuildServerSideRendere)' == 'ture'" />
+      <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --configuration=production" />
+      <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --configuration=production" Condition="'$(BuildServerSideRendere)' == 'true'" />
 
       <ItemGroup>
           <DistFiles Include="$(SpaRoot)dist\simplecrm-cli\**; $(SpaRoot)dist-server\simplecrm-cli\**" />
           <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRendere)' == 'true'" />
           <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(Identity)')" Exclude="@(ResolvedFileToPublish)">
-          <RelativePath>$(SpaRootDest)%(DistFiles.RecursiveDir)%(DistFiles.Filename)%DistFiles.Extension)</RelativePath>
+          <RelativePath>$(SpaRootDest)%(DistFiles.RecursiveDir)%(DistFiles.Filename)%(DistFiles.Extension)</RelativePath>
           <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
           </ResolvedFileToPublish>
       </ItemGroup>

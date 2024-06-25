@@ -13,6 +13,7 @@ using NSwag.AspNetCore;
 using Microsoft.Net.Http.Headers;
 using System.Text.Json.Serialization;
 using SimpleCrm.WebApi.Filters;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace SimpleCrm.WebApi
 {
@@ -171,23 +172,30 @@ namespace SimpleCrm.WebApi
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-
-            app.UseStaticFiles(new StaticFileOptions
-                {
+            // app.UseHttpsRedirection();
+            
+            app.UseStaticFiles(new StaticFileOptions // 静的ファイルのMIMEタイプとキャッシュ制御を設定 
+            {
                 OnPrepareResponse = ctx =>
                 {
                     const int durationInSeconds = 60 * 60 * 24; // 1 day
                     ctx.Context.Response.Headers[HeaderNames.CacheControl] = "public, max-age=" + durationInSeconds;
+                },
+                ServeUnknownFileTypes = true, // 不明なファイルタイプの提供を許可
+                DefaultContentType = "text/css", // デフォルトのコンテンツタイプを設定
+                ContentTypeProvider = new FileExtensionContentTypeProvider
+                {
+                    Mappings =
+                    {
+                        [".css"] = "text/css",
+                        [".js"] = "application/javascript"
+                    }
                 }
             });
             app.UseSpaStaticFiles();
-
-            //app.UseOpenApi();
-            //app.UseSwaggerUi();
 
             app.UseRouting();
             app.UseResponseCaching();
@@ -208,6 +216,23 @@ namespace SimpleCrm.WebApi
                 };
             });
 
+            app.UseWhen(
+                context => !context.Request.Path.StartsWithSegments("/api"),
+                appBuilder => appBuilder.UseSpa(spa =>
+                {
+                    if (env.IsDevelopment())
+                    {
+                        spa.Options.SourcePath = Configuration["SpaRoot"]; // Angularアプリケーションのソースパス
+                        spa.Options.StartupTimeout = new TimeSpan(0, 0, 300); // 起動タイムアウト設定
+                        spa.UseAngularCliServer(npmScript: "start:prod"); // Angular CLIのスクリプトを指定
+                    }
+                    else
+                    {
+                        //spa.Options.SourcePath = "ClientApp"; // 本番環境でのビルド成果物のパス
+                        spa.Options.SourcePath = Configuration["SpaRootDest"]; // 本番環境でのビルド成果物のパス
+                    }
+                }));
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -216,17 +241,6 @@ namespace SimpleCrm.WebApi
                 endpoints.MapRazorPages();
             });
 
-            app.UseWhen(
-                context => !context.Request.Path.StartsWithSegments("/api"),
-                appBuilder => appBuilder.UseSpa(spa =>
-                {
-                    if (env.IsDevelopment())
-                    {
-                        spa.Options.SourcePath = "../simple-crm-cli";
-                        spa.Options.StartupTimeout = new TimeSpan(0, 0, 300);
-                        spa.UseAngularCliServer(npmScript: "start:prod");
-                    }
-                }));
         }
     }
 }
